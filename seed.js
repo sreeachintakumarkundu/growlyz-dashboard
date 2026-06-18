@@ -6,8 +6,20 @@
 
 const mongoose = require('mongoose');
 const bcrypt   = require('bcryptjs');
+const fs       = require('fs');
+const path     = require('path');
 
-const MONGODB_URI = 'mongodb://localhost:27017/growlyz-dashboard';
+/* Read MONGODB_URI from .env.local (Atlas cluster), fall back to localhost. */
+function readEnvUri() {
+  try {
+    const env = fs.readFileSync(path.join(__dirname, '.env.local'), 'utf8');
+    const line = env.split('\n').find(l => /^\s*MONGODB_URI\s*=/.test(l));
+    if (line) return line.replace(/^\s*MONGODB_URI\s*=/, '').trim();
+  } catch { /* no .env.local — use default */ }
+  return 'mongodb://localhost:27017/growlyz-dashboard';
+}
+
+const MONGODB_URI = process.env.MONGODB_URI || readEnvUri();
 
 /* ── Schemas (inline so we don't need transpilation) ── */
 const UserSchema = new mongoose.Schema(
@@ -67,7 +79,9 @@ function dateStr(daysAgo) {
 /* ── Main ── */
 async function seed() {
   console.log('\n🌱  GrowlyZ Demo Seeder\n');
-  await mongoose.connect(MONGODB_URI);
+  await mongoose.connect(MONGODB_URI, {
+    serverApi: { version: '1', deprecationErrors: true },
+  });
   console.log('✅  Connected to MongoDB\n');
 
   const hashed = await bcrypt.hash('demo123', 10);

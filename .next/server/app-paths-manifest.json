@@ -1,5 +1,11 @@
 {
+  "/dashboard/page": "app/dashboard/page.js",
+  "/api/auth/me/route": "app/api/auth/me/route.js",
   "/login/page": "app/login/page.js",
+  "/api/super-admin/stats/route": "app/api/super-admin/stats/route.js",
   "/super-admin/page": "app/super-admin/page.js",
-  "/dashboard/page": "app/dashboard/page.js"
+  "/api/super-admin/admins/route": "app/api/super-admin/admins/route.js",
+  "/api/audit-booking/route": "app/api/audit-booking/route.js",
+  "/api/super-admin/clients/route": "app/api/super-admin/clients/route.js",
+  "/api/super-admin/activity/route": "app/api/super-admin/activity/route.js"
 }
