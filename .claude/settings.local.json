@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node make-superadmin.js '01754314108' 'grolyzak*#@' 'Super Admin')",
+      "Bash(node -e ' *)"
+    ]
+  }
+}

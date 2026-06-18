@@ -51,7 +51,7 @@ export default function AdminPage() {
 
   // Auth check
   useEffect(() => {
-    fetch('/api/auth/me')
+    fetch('/api/auth/me', { cache: 'no-store' })
       .then(r => r.json())
       .then(data => {
         if (!data.user || data.user.role !== 'admin') {

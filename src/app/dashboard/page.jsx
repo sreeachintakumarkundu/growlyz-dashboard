@@ -280,7 +280,7 @@ export default function DashboardPage() {
   useEffect(() => {
     const id = setInterval(async () => {
       try {
-        const [tr, hr] = await Promise.all([fetch('/api/metrics/today'), fetch('/api/metrics/history?days=30')]);
+        const [tr, hr] = await Promise.all([fetch('/api/metrics/today', { cache: 'no-store' }), fetch('/api/metrics/history?days=30', { cache: 'no-store' })]);
         if (tr.ok) { const d = await tr.json(); setTodayMetrics(d.metrics); }
         if (hr.ok) { const d = await hr.json(); setHistory(d.metrics || []); }
       } catch {}
@@ -291,7 +291,7 @@ export default function DashboardPage() {
   const loadBilling = useCallback(async () => {
     setBillingLoading(true);
     try {
-      const r = await fetch('/api/client/billing');
+      const r = await fetch('/api/client/billing', { cache: 'no-store' });
       if (r.ok) { const d = await r.json(); setBilling(d); }
     } finally { setBillingLoading(false); }
   }, []);
@@ -299,9 +299,9 @@ export default function DashboardPage() {
   const fetchAll = useCallback(async () => {
     try {
       const [meRes, todayRes, historyRes] = await Promise.all([
-        fetch('/api/auth/me'),
-        fetch('/api/metrics/today'),
-        fetch('/api/metrics/history?days=30'),
+        fetch('/api/auth/me', { cache: 'no-store' }),
+        fetch('/api/metrics/today', { cache: 'no-store' }),
+        fetch('/api/metrics/history?days=30', { cache: 'no-store' }),
       ]);
       if (!meRes.ok) { router.push('/login'); return; }
       const meData = await meRes.json();
@@ -1068,7 +1068,7 @@ export default function DashboardPage() {
                           const d = await r.json();
                           if (!r.ok) { setProfileError(d.message || 'Upload failed'); return; }
                           // refresh user
-                          const me = await fetch('/api/auth/me');
+                          const me = await fetch('/api/auth/me', { cache: 'no-store' });
                           if (me.ok) { const md = await me.json(); setUser(md.user); }
                         } finally {
                           setAvatarUploading(false);

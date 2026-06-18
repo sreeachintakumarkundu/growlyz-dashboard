@@ -203,7 +203,7 @@ function MetricsModal({ client, onClose, onSave }) {
   const loadHistory = useCallback(async () => {
     setHistLoading(true);
     try {
-      const r = await fetch(`/api/super-admin/metrics?clientId=${client._id}`);
+      const r = await fetch(`/api/super-admin/metrics?clientId=${client._id}`, { cache: 'no-store' });
       if (r.ok) { const d = await r.json(); setHistory(d.metrics || []); }
     } finally { setHistLoading(false); }
   }, [client._id]);
@@ -393,7 +393,7 @@ function ViewDashboardModal({ client, onClose }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/api/super-admin/metrics?clientId=${client._id}`)
+    fetch(`/api/super-admin/metrics?clientId=${client._id}`, { cache: 'no-store' })
       .then(r => r.ok ? r.json() : { metrics: [] })
       .then(d => setMetrics((d.metrics || []).slice(0, 7)))
       .finally(() => setLoading(false));
@@ -1389,7 +1389,7 @@ export default function SuperAdminPage() {
 
   /* Auth */
   useEffect(() => {
-    fetch('/api/auth/me')
+    fetch('/api/auth/me', { cache: 'no-store' })
       .then(r => r.json())
       .then(d => {
         if (!d.user || !['admin', 'super_admin'].includes(d.user.role)) {
@@ -1405,21 +1405,21 @@ export default function SuperAdminPage() {
   /* Data loaders */
   const loadStats = useCallback(async () => {
     setLoading(p => ({ ...p, stats: true }));
-    const r = await fetch('/api/super-admin/stats').catch(() => null);
+    const r = await fetch('/api/super-admin/stats', { cache: 'no-store' }).catch(() => null);
     if (r?.ok) setStats(await r.json());
     setLoading(p => ({ ...p, stats: false }));
   }, []);
 
   const loadClients = useCallback(async () => {
     setLoading(p => ({ ...p, clients: true }));
-    const r = await fetch('/api/super-admin/clients').catch(() => null);
+    const r = await fetch('/api/super-admin/clients', { cache: 'no-store' }).catch(() => null);
     if (r?.ok) { const d = await r.json(); setClients(d.clients || []); }
     setLoading(p => ({ ...p, clients: false }));
   }, []);
 
   const loadActivity = useCallback(async () => {
     setLoading(p => ({ ...p, activity: true }));
-    const r = await fetch('/api/super-admin/activity').catch(() => null);
+    const r = await fetch('/api/super-admin/activity', { cache: 'no-store' }).catch(() => null);
     if (r?.ok) { const d = await r.json(); setActivity(d.logs || []); }
     setLoading(p => ({ ...p, activity: false }));
   }, []);
@@ -1427,7 +1427,7 @@ export default function SuperAdminPage() {
   const loadAdmins = useCallback(async () => {
     setAdminsLoading(true);
     try {
-      const r = await fetch('/api/super-admin/admins');
+      const r = await fetch('/api/super-admin/admins', { cache: 'no-store' });
       if (r.ok) { const d = await r.json(); setAdminsList(d.admins || []); }
     } finally { setAdminsLoading(false); }
   }, []);
@@ -1435,7 +1435,7 @@ export default function SuperAdminPage() {
   const loadBookings = useCallback(async () => {
     setBookingsLoading(true);
     try {
-      const r = await fetch('/api/audit-booking');
+      const r = await fetch('/api/audit-booking', { cache: 'no-store' });
       if (r.ok) { const d = await r.json(); setBookings(d.bookings || []); }
     } finally { setBookingsLoading(false); }
   }, []);
