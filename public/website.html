@@ -1,0 +1,2418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="GrowlyZ — Bangladesh's #1 Performance Digital Marketing Agency. Server-Side Tracking, Custom Funnels &amp; ROI-Focused Ads that turn ad spend into real revenue."/>
+  <title>GrowlyZ | Running Ads With No Sales? Fix Your System.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+  /* ── TOKENS ──────────────────────────────────────────── */
+  :root{
+    /* Logo gradients — from new Z (fire top + dark metallic body) */
+    --gf: linear-gradient(135deg,#CC1500,#E83800 35%,#FF6800 68%,#FFB500);  /* fire: red→orange→yellow */
+    --ga: linear-gradient(135deg,#FF6500,#FF9200 50%,#FFB800);              /* amber: orange→yellow */
+    --gd: linear-gradient(135deg,#151520,#1E1E2C 55%,#111118);              /* dark metallic */
+    --gz: linear-gradient(135deg,#CC1500,#E83800 38%,#FF7000 70%,#FFB800);  /* logo fire — used for accents */
+    --gsp:linear-gradient(90deg,#CC1500,#E83800,#FF6500,#FF9200,#FFB800,#FFE000);
+
+    /* Backgrounds — light (SeloraX style) */
+    --bg:  #FFFFFF;
+    --bg1: #F5F6FA;
+    --bg2: #EDEEF5;
+    --bg3: #F9F9FB;
+    --bg4: #E8E9F2;
+
+    /* Borders */
+    --bd0: rgba(0,0,0,.07);
+    --bd1: rgba(0,0,0,.11);
+    --bd2: rgba(0,0,0,.18);
+
+    /* Fire icon palette (red-orange) */
+    --fib: rgba(232,56,0,.08);
+    --fid: rgba(232,56,0,.20);
+    --fic: #FF4800;
+
+    /* Amber icon palette (orange-yellow) */
+    --eib: rgba(255,152,0,.09);
+    --eid: rgba(255,152,0,.22);
+    --eic: #FF9800;
+
+    /* Accent */
+    --oa: #FF5500;  /* orange accent text */
+    --ya: #FF9200;  /* amber accent text */
+    --da: #151520;  /* dark metallic (button) */
+
+    /* Text */
+    --t0: #0D0F26;
+    --t1: #2D2E50;
+    --t2: #55616E;
+    --t3: #9CA3AF;
+
+    /* Shadows */
+    --sf: 0 4px 18px rgba(200,50,0,.24);
+    --sa: 0 4px 18px rgba(255,145,0,.22);
+    --sc: 0 2px 12px rgba(0,0,0,.07);
+    --scd: 0 6px 28px rgba(0,0,0,.11);
+    --sda: 0 4px 20px rgba(20,20,30,.28);
+
+    --r8:8px; --r12:12px; --r16:16px; --r20:20px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{font-family:'Hind Siliguri',sans-serif;color:var(--t2);background:var(--bg);line-height:1.82;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{text-decoration:none;color:inherit}
+
+  /* ── LAYOUT ──────────────────────────────────────────── */
+  .w{max-width:1100px;margin:0 auto;padding:0 24px}
+  .s{padding:88px 0}
+  .s2{background:var(--bg1)}
+  .tc{text-align:center}
+  .g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+  .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media(max-width:800px){.g4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:400px){.g4{grid-template-columns:1fr}}
+
+  /* ── TYPOGRAPHY ──────────────────────────────────────── */
+  .eye{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;padding:8px 18px;border-radius:50px;margin-bottom:20px;border:1px solid}
+  .ef{color:var(--fic);background:var(--fib);border-color:var(--fid)}
+  .ee{color:var(--eic);background:var(--eib);border-color:var(--eid)}
+  .em{color:var(--t2);background:var(--bg2);border-color:var(--bd1)}
+
+  h2.sec{font-size:clamp(26px,3.8vw,42px);font-weight:700;line-height:1.32;color:var(--t0);margin-bottom:14px;letter-spacing:-.3px}
+  .sub{font-size:clamp(15.5px,1.7vw,17.5px);color:var(--t2);line-height:1.8}
+
+  /* Text color helpers — fire palette */
+  .tf{color:var(--oa);-webkit-text-fill-color:var(--oa)}
+  .te{color:var(--ya);-webkit-text-fill-color:var(--ya)}
+  .tz{color:var(--oa);-webkit-text-fill-color:var(--oa)}
+
+  /* ── ICON CONTAINER ──────────────────────────────────── */
+  .ico{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-bottom:20px}
+  .ico-f{background:var(--fib);border:1px solid var(--fid)}
+  .ico-e{background:var(--eib);border:1px solid var(--eid)}
+  .ico svg{display:block}
+
+  /* ── BUTTONS ─────────────────────────────────────────── */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:12px 24px;border-radius:12px;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;border:none;letter-spacing:.1px;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s,filter .2s;white-space:nowrap}
+  .btn svg{flex-shrink:0}
+  .btn:hover{transform:translateY(-3px) scale(1.02);filter:brightness(1.08)}
+  .btn:active{transform:translateY(0)}
+  /* Primary: dark metallic (Z logo body color) */
+  .bf{background:var(--da);color:#fff;box-shadow:var(--sda)}
+  /* Secondary: white outline */
+  .be{background:#fff;color:var(--t0);border:1.5px solid var(--bd1);box-shadow:var(--sc)}
+  .be:hover{border-color:var(--bd2);filter:none;box-shadow:var(--scd)}
+  .nav-login-btn:hover{border-color:rgba(255,85,0,.35)!important;box-shadow:0 0 0 3px rgba(255,85,0,.07),var(--scd)!important}
+  .nav-login-btn:hover .login-icon{color:var(--oa)}
+  .bg2btn{background:rgba(0,0,0,.04);color:var(--t1);border:1px solid var(--bd1)}
+  .bg2btn:hover{background:rgba(0,0,0,.07);filter:none}
+  .bw{background:linear-gradient(135deg,#0A7A33 0%,#128C3F 45%,#25D366 100%);color:#fff;box-shadow:0 6px 22px rgba(37,211,102,.32)}
+  /* Fire CTA variant */
+  .bfire{background:linear-gradient(135deg,#E83800 0%,#FF6500 60%,#FFB800 100%);color:#fff;box-shadow:0 6px 22px rgba(232,56,0,.35)}
+  .bmd{padding:13px 30px;font-size:15px}
+  .bsm{padding:8px 16px;font-size:13px}
+  .crow{display:flex;gap:10px;flex-wrap:wrap}
+  .crow.tc{justify-content:center}
+  @media(max-width:600px){.crow{flex-direction:column;align-items:center}.crow .btn{width:auto;min-width:200px;max-width:280px;justify-content:center}}
+
+  /* ── NAV ─────────────────────────────────────────────── */
+  #nav{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.97);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd0);box-shadow:0 1px 10px rgba(0,0,0,.06);position:sticky}
+  .nw{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .nbrand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .nword{font-size:20px;font-weight:700;color:var(--t0);letter-spacing:-.2px}
+  .nz{background:var(--gz);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .nright{display:flex;align-items:center;gap:18px}
+  .nl{font-size:14px;font-weight:500;color:var(--t2);transition:color .15s;white-space:nowrap}
+  .nl:hover{color:var(--t0)}
+
+  /* Hamburger */
+  .nhbg{display:none;flex-direction:column;justify-content:center;align-items:center;width:40px;height:40px;border-radius:10px;background:var(--bg1);border:1px solid var(--bd0);cursor:pointer;gap:5px;flex-shrink:0}
+  .nhbg span{display:block;width:20px;height:2px;background:var(--t0);border-radius:2px;transition:transform .28s ease,opacity .2s ease,width .2s ease}
+  .nhbg.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nhbg.open span:nth-child(2){opacity:0;width:0}
+  .nhbg.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* Mobile drawer */
+  #nmob{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--bd0);box-shadow:0 8px 28px rgba(0,0,0,.10);padding:8px 20px 20px;z-index:299;flex-direction:column;gap:2px}
+  #nmob.open{display:flex}
+  .nml{display:flex;align-items:center;padding:14px 12px;font-size:15.5px;font-weight:600;color:var(--t0);border-radius:12px;transition:background .15s,color .15s}
+  .nml:hover,.nml:active{background:var(--bg1);color:var(--oa)}
+  .nml-cta{margin-top:8px;background:var(--gz);color:#fff;justify-content:center;border-radius:12px;padding:15px 12px;font-size:15.5px;font-weight:700;box-shadow:var(--sf)}
+
+  @media(max-width:720px){.nl{display:none}.nhbg{display:flex}}
+
+  /* ── HERO ────────────────────────────────────────────── */
+  #hero{background:var(--bg);padding:110px 0 90px;position:relative;overflow:hidden}
+  #hero::before{content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse 55% 45% at 15% 25%,rgba(232,56,0,.08) 0%,transparent 60%),
+               radial-gradient(ellipse 50% 45% at 85% 70%,rgba(255,145,0,.07) 0%,transparent 60%)}
+  #hero::after{content:'';position:absolute;inset:0;
+    background-image:linear-gradient(rgba(0,0,0,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.028) 1px,transparent 1px);
+    background-size:52px 52px}
+  .hi{position:relative;z-index:2;max-width:860px;margin:0 auto;text-align:center;padding:0 24px}
+  .hbadge{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,rgba(255,85,0,.07),rgba(255,146,0,.05));border:1px solid rgba(255,85,0,.18);color:var(--oa);font-size:11.5px;font-weight:600;padding:7px 18px;border-radius:50px;margin-bottom:34px;white-space:nowrap}
+  .ht{font-size:clamp(32px,6vw,64px);font-weight:700;color:var(--t0);line-height:1.2;margin-bottom:26px;letter-spacing:-.6px}
+  .ht .tp{color:var(--oa);-webkit-text-fill-color:var(--oa)}
+  .ht .ts{color:var(--t0);-webkit-text-fill-color:var(--t0)}
+  .hsub{font-size:clamp(15.5px,1.9vw,19.5px);color:var(--t2);max-width:700px;margin:0 auto 46px;line-height:1.78}
+  .hcta{justify-content:center;margin-bottom:56px}
+  .hstats{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px}
+  .hstat{display:flex;align-items:center;gap:11px;background:#FFFFFF;border:1px solid var(--bd0);border-radius:50px;padding:10px 20px;box-shadow:0 2px 14px rgba(0,0,0,.06)}
+  .hstat-v{font-size:17px;font-weight:700}
+  .hstat-v.f{color:var(--oa);-webkit-text-fill-color:var(--oa)}
+  .hstat-v.e{color:var(--ya);-webkit-text-fill-color:var(--ya)}
+  .hstat-d{width:1px;height:18px;background:var(--bd1)}
+  .hstat-l{font-size:12.5px;color:var(--t2)}
+  .spark{position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gsp);opacity:.6}
+
+  /* ── TOP NOTIFICATION BAR ───────────────────────────── */
+  #topbar{background:linear-gradient(90deg,#CC1500 0%,#E83800 30%,#FF6500 65%,#FF9200 100%);padding:9px 48px 9px 20px;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;z-index:200}
+  .tb-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.75);flex-shrink:0;animation:tbpulse 1.8s ease-in-out infinite}
+  @keyframes tbpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.7)}}
+  .tb-text{font-size:13px;font-weight:500;color:rgba(255,255,255,.92);line-height:1.4;text-align:center}
+  .tb-text strong{font-weight:700;color:#fff}
+  .tb-cta{font-size:12px;font-weight:700;color:#fff;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.32);padding:4px 13px;border-radius:50px;transition:background .18s;white-space:nowrap;flex-shrink:0}
+  .tb-cta:hover{background:rgba(255,255,255,.30)}
+  .tb-x{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,.65);font-size:18px;line-height:1;cursor:pointer;padding:4px 6px;transition:color .15s}
+  .tb-x:hover{color:#fff}
+  @media(max-width:500px){.tb-text{font-size:11.5px}.tb-cta{display:none}}
+
+  /* ── TOOLS STRIP ─────────────────────────────────────── */
+  #tools{background:var(--bg1);padding:20px 0;border-top:1px solid var(--bd0);border-bottom:1px solid var(--bd0);overflow:hidden}
+  .tmarquee{display:flex;align-items:center;flex-wrap:wrap;justify-content:center;gap:8px;padding:0 24px;max-width:1100px;margin:0 auto}
+  .tstrip{display:contents}
+  .tstrip-dup{display:none}
+  .tlbl{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--t3);margin-right:6px;white-space:nowrap}
+  .ttag{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:var(--bg);border:1px solid var(--bd0);border-radius:50px;font-size:11px;font-weight:500;color:var(--t2);transition:border-color .2s,color .2s,box-shadow .2s;white-space:nowrap}
+  .ttag:hover{border-color:var(--bd2);color:var(--t0);box-shadow:var(--sc)}
+  @keyframes toolsMq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media(max-width:640px){
+    #tools{padding:14px 0}
+    .tmarquee{flex-wrap:nowrap;justify-content:flex-start;padding:0;max-width:none;margin:0;gap:0;width:max-content;animation:toolsMq 20s linear infinite}
+    .tstrip{display:flex;flex-shrink:0;gap:8px;padding:0 16px;align-items:center}
+    .tstrip-dup{display:flex;flex-shrink:0;gap:8px;padding:0 16px;align-items:center}
+    .tlbl{display:none}
+  }
+
+  /* ── VS COMPARISON — LIGHT ───────────────────────────── */
+  .vswrap{display:grid;grid-template-columns:1fr 48px 1fr;align-items:start;max-width:960px;margin:0 auto}
+  .vscard{border-radius:var(--r20);padding:30px 28px 34px;text-align:center}
+  .vsl{background:linear-gradient(160deg,#FFF2F0 0%,#FFF8F6 60%,#FFF5F3 100%);border:1.5px solid rgba(220,30,30,.22);box-shadow:0 8px 32px rgba(200,20,20,.12),0 2px 8px rgba(200,20,20,.06);position:relative;overflow:hidden}
+  .vsl::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#CC1500,#E83800,#FF5500)}
+  .vsr{background:linear-gradient(160deg,#FFFBF2 0%,#FFFAF4 60%,#FFF8EE 100%);border:1.5px solid rgba(255,145,0,.22);box-shadow:0 8px 32px rgba(255,140,0,.10),0 2px 8px rgba(255,140,0,.06);position:relative;overflow:hidden}
+  .vsr::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#FF6500,#FF9200,#FFB800)}
+  .vsbadge{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;padding:6px 15px;border-radius:50px;margin-bottom:14px}
+  .vbb{background:rgba(220,30,30,.11);color:#B91C1C;border:1.5px solid rgba(220,30,30,.26)}
+  .vbg{background:rgba(22,163,74,.09);color:#16A34A;border:1px solid rgba(22,163,74,.22)}
+  .vscard h3{font-size:20px;font-weight:700;color:var(--t0);margin-bottom:18px;line-height:1.32;letter-spacing:-.2px}
+  .vsl h3{color:#991B1B}
+
+  /* Chaos pills */
+  .cbox{position:relative;height:140px;background:#fff9f8;background-image:radial-gradient(circle,rgba(204,21,0,.22) 1.2px,transparent 1.2px);background-size:20px 20px;border-radius:14px;border:1.5px solid rgba(220,30,30,.18);box-shadow:0 6px 24px rgba(200,20,20,.10),0 1px 5px rgba(200,20,20,.06),inset 0 1px 0 rgba(255,255,255,.9);margin-bottom:18px;overflow:hidden}
+  .cbox::after{content:'';position:absolute;top:50%;left:50%;width:60px;height:60px;border-radius:50%;border:2px dashed rgba(220,30,30,.18);transform:translate(-50%,-50%)}
+  .cp{position:absolute;background:rgba(255,255,255,.96);border:1px solid rgba(220,30,30,.18);border-radius:10px;padding:7px 12px;font-size:12px;font-weight:600;color:rgba(0,0,0,.55);display:flex;align-items:center;gap:5px;z-index:1;white-space:nowrap;box-shadow:0 3px 10px rgba(200,20,20,.10)}
+  .cp1{top:11px;left:8px;animation:cpf1 3.1s ease-in-out infinite}
+  .cp2{top:10px;left:53%;animation:cpf2 3.5s ease-in-out infinite .4s}
+  .cp3{top:55px;left:5%;animation:cpf3 2.9s ease-in-out infinite .7s}
+  .cp4{top:65px;left:42%;animation:cpf4 3.3s ease-in-out infinite .2s}
+  .cp5{top:100px;left:18%;animation:cpf5 3.7s ease-in-out infinite .9s}
+  @keyframes cpf1{0%,100%{transform:rotate(-5deg) translateY(0)}50%{transform:rotate(-5deg) translateY(-7px)}}
+  @keyframes cpf2{0%,100%{transform:rotate(4deg) translateY(0)}50%{transform:rotate(4deg) translateY(-6px)}}
+  @keyframes cpf3{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(-3deg) translateY(-8px)}}
+  @keyframes cpf4{0%,100%{transform:rotate(5deg) translateY(0)}50%{transform:rotate(5deg) translateY(-5px)}}
+  @keyframes cpf5{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(-4deg) translateY(-7px)}}
+
+  /* Org grid */
+  .ogrid{background:rgba(255,255,255,.8);border-radius:12px;border:1px solid var(--bd1);overflow:hidden;margin-bottom:18px}
+  .oghd{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--bd0);background:rgba(255,255,255,.9)}
+  .ogd{width:10px;height:10px;border-radius:50%}
+  .ogd1{background:#FF5F57}.ogd2{background:#FEBC2E}.ogd3{background:#28C840}
+  .ogbn{font-size:12px;font-weight:700;margin-left:5px;background:var(--gz);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .ogitems{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd0)}
+  .ogitem{background:#fff;padding:9px 11px;font-size:11.5px;font-weight:600;color:var(--t1);display:flex;align-items:center;gap:7px;transition:background .15s}
+  .ogitem:hover{background:rgba(255,100,0,.05);color:var(--t0)}
+  .ogico{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .ogico-f{background:linear-gradient(135deg,#4F46E5,#818CF8);box-shadow:0 2px 7px rgba(79,70,229,.36)}
+  .ogico-m{background:linear-gradient(135deg,#0891B2,#22D3EE);box-shadow:0 2px 7px rgba(8,145,178,.32)}
+  .ogico-e{background:linear-gradient(135deg,#059669,#34D399);box-shadow:0 2px 7px rgba(5,150,105,.30)}
+
+  /* Metric */
+  .vsmet{border-radius:11px;padding:14px 18px;display:inline-flex;align-items:center;gap:12px;margin-bottom:18px;max-width:100%}
+  .vmb{background:rgba(220,30,30,.07);border:1.5px solid rgba(220,30,30,.18)}
+  .vmg{background:rgba(255,145,0,.06);border:1px solid rgba(255,145,0,.18)}
+  .vmico{font-size:22px;flex-shrink:0}
+  .vmnum{font-size:21px;font-weight:700;line-height:1.15}
+  .vmb .vmnum{color:#B91C1C;-webkit-text-fill-color:#B91C1C;font-size:24px}
+  .vmg .vmnum{background:var(--gz);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .vmunit{font-size:12.5px;font-weight:500;color:var(--t2);-webkit-text-fill-color:var(--t2);margin-left:2px}
+  .vmlbl{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--t3);margin-top:2px}
+
+  /* VS list */
+  .vsl-list{list-style:none;padding:0;margin:0 auto;display:flex;flex-direction:column;gap:9px;text-align:left;display:inline-flex}
+  .vsl-list li{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:var(--t2);line-height:1.58}
+  .vlic{flex-shrink:0;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700;margin-top:1px}
+  .vlicb{background:rgba(220,30,30,.11);color:#B91C1C;border:1.5px solid rgba(220,30,30,.28)}
+  .vlicg{background:rgba(22,163,74,.10);color:#16A34A;border:1px solid rgba(22,163,74,.24)}
+
+  /* VS separator */
+  .vssep{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;align-self:stretch}
+  .vsline{width:2px;flex:1;min-height:24px}
+  .vstop{background:linear-gradient(to bottom,transparent,rgba(232,56,0,.25))}
+  .vsbot{background:linear-gradient(to bottom,rgba(232,56,0,.25),transparent)}
+  .vscirc{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#fff 60%,rgba(255,100,0,.06));border:2px solid rgba(232,56,0,.22);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:var(--t0);letter-spacing:.5px;box-shadow:0 4px 20px rgba(232,56,0,.14),0 0 0 5px rgba(232,56,0,.05);animation:vspulse 2.4s ease-in-out infinite;flex-shrink:0}
+  @keyframes vspulse{0%,100%{box-shadow:0 4px 20px rgba(232,56,0,.14),0 0 0 5px rgba(232,56,0,.05)}50%{box-shadow:0 4px 28px rgba(232,56,0,.28),0 0 0 9px rgba(232,56,0,.08)}}
+  .vsarr{color:var(--oa);display:flex;align-items:center;justify-content:center;padding:4px 0;animation:vsarrbounce 1.4s ease-in-out infinite;flex-shrink:0}
+  @keyframes vsarrbounce{0%,100%{transform:translateY(0);opacity:.7}50%{transform:translateY(5px);opacity:1}}
+  @media(max-width:780px){.vswrap{grid-template-columns:1fr}.vssep{flex-direction:row;padding:16px 0;gap:10px;align-self:auto}.vsline{width:auto;height:2px;flex:1;min-height:unset}.vstop{background:linear-gradient(to right,transparent,rgba(232,56,0,.25))}.vsbot{background:linear-gradient(to right,rgba(232,56,0,.25),transparent)}.vsarr{animation:none;transform:rotate(-90deg)}}
+
+  /* Bottom CTA box */
+  .vcta{margin-top:48px;max-width:960px;margin-left:auto;margin-right:auto;background:linear-gradient(135deg,rgba(255,85,0,.04),rgba(255,146,0,.03));border:1px solid rgba(232,56,0,.14);border-radius:var(--r20);padding:44px 36px;text-align:center}
+  .vcta p:first-child{font-size:22px;font-weight:700;color:var(--t0);margin-bottom:10px;letter-spacing:-.2px}
+  .vcta p:nth-child(2){font-size:15px;color:var(--t2);max-width:500px;margin:0 auto 28px;line-height:1.72}
+
+  /* ── FRAMEWORK — Light gradient ─────────────────────── */
+  #framework{background:linear-gradient(180deg,#FFFFFF 0%,#F5F6FA 100%);position:relative;overflow:hidden}
+  #framework::before{content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(232,80,0,.07) 0%,transparent 55%),
+               radial-gradient(ellipse 40% 40% at 4% 100%,rgba(200,30,0,.05) 0%,transparent 50%),
+               radial-gradient(ellipse 35% 40% at 96% 100%,rgba(255,140,0,.04) 0%,transparent 48%)}
+  #framework::after{content:'';position:absolute;inset:0;
+    background-image:linear-gradient(rgba(0,0,0,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.025) 1px,transparent 1px);
+    background-size:44px 44px}
+  .fwrap{position:relative;z-index:1}
+
+  /* Phase rows */
+  .frow{margin-bottom:28px}
+  .frow:last-child{margin-bottom:0}
+  .fphase{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+  .fphbadge{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;color:#fff;white-space:nowrap;flex-shrink:0}
+  .fphbadge-f{background:var(--gf);box-shadow:0 3px 12px rgba(200,30,0,.30)}
+  .fphbadge-m{background:var(--gz);box-shadow:0 3px 12px rgba(232,60,0,.25)}
+  .fphbadge-e{background:var(--ga);box-shadow:0 3px 12px rgba(255,145,0,.28)}
+  .fphline{flex:1;height:1px;background:var(--bd0)}
+
+  /* Grid */
+  .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:680px){.fgrid{grid-template-columns:1fr}}
+  @media(min-width:681px) and (max-width:900px){.fgrid{grid-template-columns:repeat(2,1fr)}}
+
+  /* Cards — light */
+  .fstep{background:#FFFFFF;border:1px solid var(--bd0);border-radius:var(--r20);padding:28px 24px;position:relative;overflow:hidden;transition:background .22s,border-color .22s,transform .22s,box-shadow .22s;box-shadow:var(--sc)}
+  .fstep::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+  .ph-f::before{background:var(--gf)}
+  .ph-m::before{background:var(--gz)}
+  .ph-e::before{background:var(--ga)}
+  /* Faint large number behind each card */
+  .fstep::after{display:none}
+  .fstep:hover{background:#FAFAFA;border-color:var(--bd1);transform:translateY(-4px);box-shadow:var(--scd)}
+  @media(max-width:680px){.fstep:hover{transform:none}}
+
+  .fnum{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px}
+  .fnbadge{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;flex-shrink:0}
+  .ph-f .fnbadge{background:var(--gf);box-shadow:0 3px 12px rgba(200,20,0,.30)}
+  .ph-m .fnbadge{background:var(--gz);box-shadow:0 3px 12px rgba(232,56,0,.28)}
+  .ph-e .fnbadge{background:var(--ga);box-shadow:0 3px 12px rgba(255,145,0,.28)}
+  .ftag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--t3)}
+  .fstep h4{font-size:16px;font-weight:700;color:var(--t0);margin-bottom:9px;text-align:center;letter-spacing:-.1px}
+  .fstep p{font-size:13.5px;color:var(--t2);line-height:1.72;text-align:center}
+
+  /* ── PROCESS ─────────────────────────────────────────── */
+  #process{background:var(--bg);position:relative;overflow:hidden}
+  #process::before{content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse 50% 60% at 20% 50%,rgba(232,56,0,.05) 0%,transparent 60%),
+               radial-gradient(ellipse 45% 55% at 80% 50%,rgba(255,145,0,.05) 0%,transparent 60%)}
+  .procwrap{position:relative;z-index:1}
+  .procgrid{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:0 10px;margin-top:36px;align-items:start}
+  .parrow{display:flex;align-items:center;padding-top:46px;color:rgba(200,30,0,.3);font-size:20px;flex-shrink:0;line-height:1}
+  @media(max-width:720px){.procgrid{grid-template-columns:1fr 1fr;gap:12px}.parrow{display:none}}
+  @media(max-width:420px){.procgrid{grid-template-columns:1fr}}
+  .pstep{background:#fff;border:1px solid var(--bd0);border-radius:16px;padding:22px 16px 20px;text-align:center;position:relative;overflow:hidden;transition:box-shadow .22s,border-color .22s,transform .22s;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+  .pstep::before{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;background:var(--gz)}
+  .pstep:hover{box-shadow:0 8px 24px rgba(200,30,0,.1);border-color:rgba(200,30,0,.18);transform:translateY(-3px)}
+  .pnum{width:48px;height:48px;border-radius:50%;background:var(--gz);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 4px 16px rgba(200,30,0,.32)}
+  .pstep h4{font-size:14.5px;font-weight:700;color:var(--t0);margin-bottom:6px;letter-spacing:-.1px}
+  .pstep p{font-size:12.5px;color:var(--t2);line-height:1.65}
+
+  /* ── WHY / NUMBERS ───────────────────────────────────── */
+  #why{background:var(--bg1)}
+  .numgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:44px}
+  @media(max-width:900px){.numgrid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.numgrid{grid-template-columns:repeat(2,1fr);gap:12px}}
+  .ncard{background:#FFFFFF;border:1px solid var(--bd0);border-radius:var(--r20);padding:30px 22px;text-align:center;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;box-shadow:var(--sc)}
+  .ncard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gz)}
+  .ncard:hover{box-shadow:var(--scd);transform:translateY(-3px)}
+  .ncard-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+  .ni-f{background:var(--fib);border:1px solid var(--fid)}
+  .ni-e{background:var(--eib);border:1px solid var(--eid)}
+  /* Stat numbers: fire orange */
+  .nbig{font-size:44px;font-weight:700;line-height:1;margin-bottom:10px;color:var(--oa);-webkit-text-fill-color:var(--oa)}
+  .nlbl{font-size:13.5px;color:var(--t2);line-height:1.5}
+
+  .whygrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:640px){.whygrid{grid-template-columns:1fr}}
+  .wcard{background:#FFFFFF;border:1px solid var(--bd0);border-radius:var(--r20);padding:30px 26px;position:relative;overflow:hidden;transition:box-shadow .2s,border-color .2s,transform .2s;box-shadow:var(--sc);text-align:center}
+  .wcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gz)}
+  .wcard:hover{box-shadow:var(--scd);border-color:var(--bd1);transform:translateY(-4px)}
+  .wcard .ico{margin-left:auto;margin-right:auto}
+  .wcard h4{font-size:17px;font-weight:700;color:var(--t0);margin-bottom:10px;letter-spacing:-.1px}
+  .wcard p{font-size:14px;color:var(--t2);line-height:1.72;margin-bottom:16px}
+  .wcard ul{padding:0;list-style:none;text-align:left;display:inline-block}
+  .wcard ul li{font-size:13.5px;color:var(--t2);padding:4px 0 4px 20px;position:relative;line-height:1.5}
+  .wcard ul li::before{content:'✓';position:absolute;left:0;color:var(--ya);-webkit-text-fill-color:var(--ya);font-weight:700;font-size:12px}
+
+  /* ── CTA ─────────────────────────────────────────────── */
+  #cta{background:var(--bg);position:relative;overflow:hidden;padding:96px 0}
+  #cta::before{content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse 55% 65% at 18% 50%,rgba(232,56,0,.06) 0%,transparent 60%),
+               radial-gradient(ellipse 50% 60% at 82% 50%,rgba(255,145,0,.07) 0%,transparent 60%)}
+  #cta::after{content:'';position:absolute;inset:0;
+    background-image:linear-gradient(rgba(0,0,0,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.025) 1px,transparent 1px);
+    background-size:56px 56px}
+  .ctai{position:relative;z-index:1;text-align:center;max-width:740px;margin:0 auto;padding:0 24px}
+  .ctai h2{font-size:clamp(26px,4vw,44px);font-weight:700;color:var(--t0);line-height:1.28;margin-bottom:14px;letter-spacing:-.4px}
+  .ctai p{font-size:17px;color:var(--t2);margin-bottom:46px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.76}
+  .ctacards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:36px}
+  @media(max-width:640px){.ctacards{grid-template-columns:1fr}}
+  .ctacard{background:#FFFFFF;border:1px solid var(--bd0);border-radius:var(--r20);padding:26px 22px;text-align:center;transition:box-shadow .18s,border-color .18s,transform .18s;box-shadow:var(--sc)}
+  .ctacard:hover{box-shadow:var(--scd);border-color:rgba(255,85,0,.18);transform:translateY(-4px)}
+  .ctacard>div[style]{margin-left:auto;margin-right:auto}
+  .ctacard h4{font-size:15.5px;font-weight:700;color:var(--t0);margin:14px 0 7px;letter-spacing:-.1px}
+  .ctacard p{font-size:13.5px;color:var(--t2);line-height:1.68}
+  .ctanote{color:var(--t2);font-size:13.5px;display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;margin-top:22px}
+  .ctanote .sp{color:var(--bd1)}
+
+  /* ── FAQ ─────────────────────────────────────────────── */
+  #faq{background:var(--bg1)}
+  .faqwrap{max-width:740px;margin:0 auto}
+  .faqitem{border-bottom:1px solid var(--bd0)}
+  .faqbtn{display:flex;width:100%;background:none;border:none;font-family:inherit;font-size:17px;font-weight:600;color:var(--t0);text-align:left;padding:24px 0;cursor:pointer;justify-content:space-between;align-items:center;gap:14px;transition:color .15s;line-height:1.4}
+  .faqbtn:hover{color:var(--oa)}
+  .faqa{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--bg1);border:1px solid var(--bd1);display:flex;align-items:center;justify-content:center;color:var(--t2);font-size:20px;font-weight:300;transition:transform .26s,background .2s,color .2s,border-color .2s}
+  .faqitem.open .faqbtn{color:var(--oa)}
+  .faqitem.open .faqa{transform:rotate(45deg);background:var(--gz);color:#fff;border-color:transparent}
+  .faqbody{font-size:15.5px;color:var(--t2);line-height:1.84;max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.4,0,.2,1),padding .25s}
+  .faqitem.open .faqbody{max-height:520px;padding-bottom:26px}
+
+  /* ── FOOTER — dark navy ───────────────────────────────── */
+  footer{background:#0A0B1E;color:rgba(255,255,255,.48);padding:72px 0 36px;position:relative}
+  footer::before{content:'';display:block;height:2px;background:var(--gsp);opacity:.55;position:absolute;top:0;left:0;right:0}
+  .ftgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-bottom:52px;padding-top:12px;text-align:center}
+  @media(max-width:720px){.ftgrid{grid-template-columns:1fr 1fr;gap:24px 20px}.ftgrid>div:first-child{grid-column:1/-1}}
+  .ftbrand{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px}
+  .ftword{font-size:20px;font-weight:700;color:#FFFFFF}
+  .ftz{background:var(--gz);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .ftdesc{font-size:14px;line-height:1.72;margin:0 auto 20px;max-width:280px;color:rgba(255,255,255,.48)}
+  .ftcon{display:flex;flex-direction:column;align-items:center}
+  .ftcon a{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.48);font-size:13.5px;margin-bottom:8px;transition:color .15s}
+  .ftcon a:hover{color:#FFFFFF}
+  footer h5{color:#FFFFFF;font-size:12.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:16px}
+  footer ul{list-style:none}
+  footer ul li{margin-bottom:9px}
+  footer ul li a{color:rgba(255,255,255,.48);font-size:14px;transition:color .15s}
+  footer ul li a:hover{color:#FFFFFF}
+  .ftbot{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;font-size:13px;text-align:center}
+  .ftmark{background:var(--gz);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+
+  /* ══════════════════════════════════════════════════════
+     MOBILE RESPONSIVE
+  ══════════════════════════════════════════════════════ */
+
+  /* ═══ RESPONSIVE ════════════════════════════════════════ */
+
+  /* Tablet (≤900px) */
+  @media(max-width:900px){
+    .g4{grid-template-columns:repeat(2,1fr)}
+    .numgrid{grid-template-columns:repeat(2,1fr)}
+  }
+
+  /* Tablet (≤768px) */
+  @media(max-width:768px){
+    .s{padding:68px 0}
+    #hero{padding:88px 0 68px}
+    #cta{padding:72px 0}
+    .ctai p{margin-bottom:34px}
+    .vcta{padding:32px 24px}
+    .hcta{margin-bottom:40px}
+    .nw{padding:13px 20px}
+    .ftgrid{grid-template-columns:1fr 1fr;gap:36px}
+  }
+
+  /* Mobile (≤640px) */
+  @media(max-width:640px){
+    .s{padding:56px 0}
+    body{font-size:16px}
+    .w{padding:0 20px}
+
+    /* Nav */
+    .nw{padding:12px 20px}
+    .nword{font-size:18px}
+    .btn.bsm{padding:9px 16px;font-size:13.5px}
+
+    /* Hero */
+    #hero{padding:72px 0 56px}
+    .hi{padding:0 20px}
+    .hbadge{font-size:12px;padding:8px 16px;line-height:1.5;white-space:normal;max-width:320px;text-align:center;justify-content:center}
+    .ht{font-size:clamp(30px,7.5vw,50px);letter-spacing:-.3px}
+    .hsub{font-size:15.5px;margin-bottom:32px;line-height:1.72}
+    .hcta{margin-bottom:32px;gap:10px}
+    .hstats{gap:9px}
+    .hstat{padding:9px 14px;gap:9px}
+    .hstat-v{font-size:15px}
+    .hstat-l{font-size:11.5px}
+    .hstat-d{height:15px}
+
+    /* Problem VS */
+    .vswrap{gap:16px}
+    .vscard h3{font-size:17px}
+    .vscard{padding:24px 20px 28px}
+    .cbox{height:122px}
+    .vcta{padding:28px 22px}
+    .vcta p:first-child{font-size:18px}
+    .ogitems{grid-template-columns:repeat(2,1fr)}
+
+    /* Framework */
+    .frow{margin-bottom:22px}
+    .fphbadge{font-size:9.5px;padding:5px 13px}
+    .fstep{padding:24px 20px}
+
+    /* Process */
+    .pstep{padding:20px 14px 18px}
+    .pstep h4{font-size:14px}
+    .pstep p{font-size:12px}
+
+    /* Why */
+    .nbig{font-size:36px}
+    .wcard{padding:24px 20px}
+    .wcard p{margin-bottom:12px}
+
+    /* CTA */
+    #cta{padding:60px 0}
+    .ctai{padding:0 20px}
+    .ctai h2 br{display:none}
+    .ctai p{font-size:15.5px;margin-bottom:28px}
+    .ctacard{padding:20px 18px}
+
+    /* FAQ */
+    .faqwrap{max-width:100%}
+    .faqbtn{font-size:15.5px;padding:20px 0}
+    .faqbody{font-size:14.5px}
+
+    /* Footer */
+    .ftgrid{grid-template-columns:1fr 1fr;gap:20px 16px}
+    .ftbot{flex-direction:column;align-items:center;gap:6px}
+    .ftbot p:last-child{font-size:12px;opacity:.75}
+
+    /* CTA buttons full-width on mobile */
+    .crow .btn{width:auto;min-width:190px;max-width:280px;justify-content:center}
+  }
+
+  /* Small mobile (≤480px) */
+  @media(max-width:480px){
+    .s{padding:48px 0}
+    .w{padding:0 16px}
+
+    /* Nav */
+    .nw{padding:11px 16px}
+    .nword{font-size:17px}
+    .nbrand svg{width:26px;height:26px}
+
+    /* Hero */
+    #hero{padding:64px 0 48px}
+    .hi{padding:0 16px}
+    .hbadge{font-size:11.5px;padding:7px 14px;max-width:280px}
+    .ht{font-size:clamp(27px,7.5vw,42px)}
+    .hsub{font-size:15px}
+    /* Stats: 2×2 grid */
+    .hstats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+    .hstat{border-radius:var(--r12);padding:14px 12px;justify-content:center;flex-direction:column;align-items:center;gap:4px;text-align:center;border-radius:14px}
+    .hstat-d{display:none}
+    .hstat-v{font-size:16px}
+    .hstat-l{font-size:11px}
+
+    /* Problem VS */
+    .vscard{padding:20px 18px 24px}
+    .vswrap{gap:14px}
+    .vcta{padding:24px 18px;border-radius:var(--r16)}
+    .vcta p:first-child{font-size:17px}
+    .cbox{height:114px}
+    .cp{font-size:11px;padding:5px 9px}
+    .ogitems{grid-template-columns:repeat(2,1fr)}
+    .ogitem{font-size:11.5px;padding:9px 10px}
+    .vsmet{padding:13px 14px}
+    .vmnum{font-size:20px}
+
+    /* Framework */
+    .fstep{padding:22px 16px}
+    .fphbadge{font-size:9px;padding:4px 11px}
+    .fnbadge{width:36px;height:36px}
+    .fnum{margin-bottom:14px}
+
+    /* Process */
+    .pstep{padding:18px 12px 16px}
+    .pnum{width:42px;height:42px}
+
+    /* Why */
+    .ncard{padding:24px 16px}
+    .nbig{font-size:32px}
+    .nlbl{font-size:12.5px}
+    .whygrid{grid-template-columns:1fr}
+
+    /* CTA */
+    #cta{padding:52px 0}
+    .ctai{padding:0 16px}
+    .ctacard{padding:18px 16px}
+
+    /* FAQ */
+    .faqbtn{font-size:15px;gap:10px;padding:18px 0}
+    .faqa{width:28px;height:28px;font-size:18px}
+
+    /* Footer */
+    .ftgrid{gap:30px}
+    .ftdesc{max-width:100%}
+    .ftbot{gap:5px;font-size:12px}
+  }
+
+  /* Extra small (≤380px) */
+  @media(max-width:380px){
+    .s{padding:40px 0}
+    #hero{padding:56px 0 42px}
+    .w,.hi,.ctai{padding-left:14px;padding-right:14px}
+    .nw{padding:10px 14px}
+    .nword{font-size:16px}
+    .nbrand{gap:7px}
+    .nbrand svg{width:24px;height:24px}
+    .btn.bsm{padding:8px 12px;font-size:13px}
+    .hbadge{font-size:11px;max-width:240px;padding:6px 12px}
+    .ht{font-size:clamp(25px,7.5vw,36px)}
+    .hsub{font-size:14.5px}
+    .vscard{padding:18px 14px 22px}
+    .cbox{height:104px}
+    .cp{font-size:10.5px;padding:5px 8px}
+    .fstep{padding:18px 14px}
+    .pstep{padding:16px 11px 14px}
+    .ncard{padding:20px 12px}
+    .nbig{font-size:28px}
+    .ctacard{padding:16px 13px}
+    .faqbtn{font-size:14.5px}
+  }
+
+  /* Reduce animation cost on mobile */
+  @media(max-width:640px){
+    #hero::before{animation:none}
+  }
+
+  /* ── FLOATING WA ─────────────────────────────────────── */
+  .wafab{position:fixed;bottom:26px;right:26px;z-index:999;width:56px;height:56px;background:linear-gradient(135deg,#128C3F,#25D366);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(37,211,102,.42);transition:transform .2s,box-shadow .2s}
+  .wafab:hover{transform:scale(1.1);box-shadow:0 10px 30px rgba(37,211,102,.5)}
+  .wafab::before{content:'';position:absolute;inset:-7px;border-radius:50%;border:2.5px solid rgba(37,211,102,.35);animation:wap 2.2s ease-out infinite}
+  @keyframes wap{0%{transform:scale(1);opacity:1}100%{transform:scale(1.65);opacity:0}}
+
+  /* ── MODERN ANIMATIONS ──────────────────────────────────── */
+  @keyframes hbDown{0%{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes hUp{0%{opacity:0;transform:translateY(34px);filter:blur(7px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+  @keyframes hFade{from{opacity:0;filter:blur(5px)}to{opacity:1;filter:blur(0)}}
+  @keyframes popIn{0%{opacity:0;transform:scale(.72)}65%{transform:scale(1.07)}100%{opacity:1;transform:scale(1)}}
+  @keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.32;transform:scale(.52)}}
+  @keyframes sparkShim{0%,100%{opacity:.4}50%{opacity:1}}
+  @keyframes bgBreathe{0%,100%{opacity:1}50%{opacity:.62}}
+  @keyframes shine{from{left:-80%}to{left:160%}}
+  @keyframes logoBob{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.06) rotate(-6deg)}}
+
+  /* Hero entrance */
+  .hbadge{animation:hbDown .55s .06s ease both}
+  .ht{animation:hUp .78s .18s ease both}
+  .hsub{animation:hFade .72s .42s ease both}
+  .hcta{animation:hFade .7s .6s ease both}
+  /* Individual stat chip pop (overrides parent) */
+  .hstats{animation:none!important}
+  .hstat:nth-child(1){animation:popIn .52s .78s ease both}
+  .hstat:nth-child(2){animation:popIn .52s .92s ease both}
+  .hstat:nth-child(3){animation:popIn .52s 1.06s ease both}
+  .hstat:nth-child(4){animation:popIn .52s 1.2s ease both}
+
+  /* Fire gradient text shimmer — heading orange + all .tz clips */
+  .ht .tp{background:none;color:var(--oa);-webkit-text-fill-color:var(--oa)}
+
+  /* Badge dot pulse */
+  .hbadge svg{animation:dotPulse 2.4s .6s ease-in-out infinite}
+  /* Spark shimmer */
+  .spark{animation:sparkShim 2.8s ease-in-out infinite}
+  /* Background glow breathe */
+  #hero::before{animation:bgBreathe 7s ease-in-out infinite}
+
+  /* Logo hover springy bob */
+  .nbrand svg{transition:transform .38s cubic-bezier(.34,1.56,.64,1)}
+  .nbrand:hover svg{transform:scale(1.14) rotate(-8deg)}
+
+  /* Button shine sweep on hover */
+  .btn{overflow:hidden;position:relative}
+  .btn::after{content:'';position:absolute;top:0;left:-80%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.24),transparent);transform:skewX(-20deg);pointer-events:none;border-radius:inherit}
+  .btn:hover::after{animation:shine .52s ease forwards}
+
+  /* Card hover glow upgrades */
+  .fstep:hover{box-shadow:0 16px 44px rgba(0,0,0,.38),0 0 0 1px rgba(255,80,0,.22),0 6px 24px rgba(255,50,0,.16)!important}
+  .ncard:hover{box-shadow:0 8px 32px rgba(0,0,0,.10),0 0 0 1px rgba(255,100,0,.15)!important}
+  .wcard:hover{box-shadow:0 8px 32px rgba(0,0,0,.10),0 0 0 1px rgba(255,100,0,.15)!important}
+  .vscard{transition:box-shadow .28s ease,transform .28s ease}
+  .vsl:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(232,32,32,.10)!important}
+  .vsr:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(255,145,0,.12)!important}
+  .ctacard{transition:box-shadow .2s ease,transform .2s ease,border-color .2s ease}
+  .ctacard:hover{transform:translateY(-3px)!important}
+
+  /* Scroll progress bar */
+  #spbar{position:fixed;top:0;left:0;height:2.5px;background:linear-gradient(90deg,#CC1500,#E83800,#FF6500,#FFB800);z-index:9999;width:0;pointer-events:none;border-radius:0 2px 2px 0;box-shadow:0 0 8px rgba(255,100,0,.5)}
+
+  /* Nav scroll state */
+  #nav{transition:box-shadow .3s ease,background .3s ease}
+  #nav.nav-scrolled{box-shadow:0 4px 28px rgba(0,0,0,.12)!important;background:rgba(255,255,255,.98)!important}
+
+  /* ── BOOKING BOTTOM SHEET ────────────────────────────────── */
+  #bsov{display:none;position:fixed;inset:0;z-index:2000;background:transparent;transition:background .3s,-webkit-backdrop-filter .3s,backdrop-filter .3s}
+  #bsov.open{display:block}
+  #bsov.vis{background:rgba(10,11,30,.5);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+  #bsheet{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(110%);width:100%;max-width:460px;z-index:2001;background:#fff;border-radius:18px 18px 0 0;box-shadow:0 -6px 36px rgba(0,0,0,.13);padding-bottom:env(safe-area-inset-bottom,0px);transition:transform .38s cubic-bezier(.32,1.1,.64,1);max-height:88vh;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--bd1) transparent}
+  #bsheet.open{transform:translateX(-50%) translateY(0)}
+  @media(min-width:640px){
+    #bsheet{bottom:auto;top:50%;transform:translate(-50%,calc(-50% + 20px));opacity:0;border-radius:18px;box-shadow:0 24px 64px rgba(0,0,0,.18),0 0 0 1px rgba(0,0,0,.06);transition:transform .3s cubic-bezier(.32,1.1,.64,1),opacity .22s ease;padding-bottom:0;max-height:92vh}
+    #bsheet.open{transform:translate(-50%,-50%);opacity:1}
+    .bsh{display:none}
+  }
+  #bsheet::before{content:'';display:block;height:3px;background:linear-gradient(90deg,#CC1500,#E83800,#FF7200,#FFB800);border-radius:18px 18px 0 0}
+  #bsheet::-webkit-scrollbar{width:3px}#bsheet::-webkit-scrollbar-thumb{background:var(--bd1);border-radius:2px}
+  .bsh{width:32px;height:3px;background:var(--bd1);border-radius:2px;margin:10px auto 0}
+  .bshd{display:flex;align-items:center;justify-content:space-between;padding:10px 16px 0}
+  .bsht{font-size:14px;font-weight:800;color:var(--t0);letter-spacing:-.02em;display:flex;align-items:center;gap:6px}
+  .bshx{width:26px;height:26px;border-radius:50%;background:var(--bg3);border:none;color:var(--t2);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;line-height:1;flex-shrink:0}
+  .bshx:hover{background:rgba(232,56,0,.08);color:var(--gz)}
+  .bsbd{padding:10px 16px 18px}
+  .bsf2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+  @media(max-width:380px){.bsf2{grid-template-columns:1fr}}
+  .bsf{margin-bottom:8px}
+  .bsl{display:block;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--t2);margin-bottom:4px}
+  .bsi{width:100%;font-family:inherit;font-size:13px;color:var(--t0);background:var(--bg3);border:1.5px solid var(--bd0);border-radius:8px;padding:8px 10px;transition:border-color .2s,box-shadow .2s,background .18s;outline:none;-webkit-appearance:none;appearance:none}
+  .bsi:focus{border-color:var(--fic);background:#fff;box-shadow:0 0 0 3px rgba(232,56,0,.09)}
+  .bsi.err{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.07);background:#FFF8F8}
+  .bsi::placeholder{color:var(--t3)}
+  .bsi[type=date]{color-scheme:light}
+  .bse{font-size:10px;color:#DC2626;min-height:12px;margin-top:2px}
+  .bsslots{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:4px}
+  .bssl{border:1.5px solid var(--bd0);border-radius:9px;padding:8px 5px;cursor:pointer;transition:all .18s;text-align:center;background:var(--bg3);user-select:none}
+  .bssl:hover{border-color:var(--gz);background:rgba(232,56,0,.04)}
+  .bssl.sel{border-color:var(--gz);background:rgba(232,56,0,.07);box-shadow:0 0 0 1px var(--gz)}
+  .bssl-ico{font-size:16px;margin-bottom:2px;display:block}
+  .bssl-nm{font-size:11px;font-weight:700;color:var(--t0);margin-bottom:1px}
+  .bssl-t{font-size:10px;color:var(--t2)}
+  .bsse{font-size:10px;color:#DC2626;min-height:12px;margin-top:3px}
+  .bssub{width:100%;background:linear-gradient(90deg,#E83800,#FF7200);color:#fff;font-family:inherit;font-size:13.5px;font-weight:700;padding:11px;border-radius:9px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(232,56,0,.26);transition:transform .18s,filter .18s;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:7px;overflow:hidden;position:relative}
+  .bssub:hover{transform:translateY(-1px);filter:brightness(1.06)}
+  .bssub:active{transform:translateY(0)}
+  .bssub::after{content:'';position:absolute;top:0;left:-80%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transform:skewX(-20deg);pointer-events:none}
+  .bssub:hover::after{animation:shine .52s ease forwards}
+  .bsnote{text-align:center;font-size:10.5px;color:var(--t3);margin-top:6px;line-height:1.6}
+  .bsloading{display:none;flex-direction:column;align-items:center;gap:12px;padding:36px 16px;text-align:center}
+  .bsloading.on{display:flex}
+  .bsspinner{width:34px;height:34px;border:2.5px solid rgba(232,56,0,.14);border-top-color:var(--gz);border-radius:50%;animation:bsspin .75s linear infinite}
+  @keyframes bsspin{to{transform:rotate(360deg)}}
+  .bssucc{display:none;padding:32px 16px 26px;text-align:center}
+  .bssucc.on{display:block}
+  .bssico{width:54px;height:54px;background:linear-gradient(135deg,#16A34A,#22C55E);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;animation:bspop .48s cubic-bezier(.34,1.56,.64,1)}
+  @keyframes bspop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+  .bssh{font-size:17px;font-weight:800;color:var(--t0);margin-bottom:7px;letter-spacing:-.02em}
+  .bssp{font-size:13px;color:var(--t2);line-height:1.6;margin-bottom:16px;max-width:270px;margin-left:auto;margin-right:auto}
+  .bswabtn{width:100%;justify-content:center}
+
+  /* ── ADS MOCKUP SECTION ─────────────────────────────── */
+  #adsmock{background:var(--bg1);padding:56px 0 72px}
+  #adsmock,.demo-vs-divider,.diff-layout{--muted:#6B7280;--grad:var(--gz);--orange:var(--oa);--amber:var(--ya);--white:#e4e6eb;--border:rgba(255,255,255,.1);--card:rgba(255,255,255,.04)}
+  .amwrap{max-width:900px;margin:0 auto;padding:0 24px}
+  .amhead{margin-bottom:28px;text-align:center}
+  .amhead p{font-size:13.5px;color:var(--t2);margin-top:6px}
+  /* Reveal animation */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  /* ADM CHROME */
+  .adm-window{background:#1a1b1e;border-radius:16px;border:1px solid rgba(255,255,255,.08);overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04);position:relative}
+  .adm-chrome{background:#2d2e30;padding:10px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.06)}
+  .adm-chrome-dots{display:flex;gap:6px}
+  .adm-chrome-dots span{width:12px;height:12px;border-radius:50%;display:inline-block}
+  .adm-chrome-url{flex:1;background:#3a3b3c;border-radius:6px;padding:5px 12px;font-size:11px;color:#8a8d91;display:flex;align-items:center;gap:6px}
+  .adm-status-badge{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#8a8d91;background:#3a3b3c;padding:4px 12px;border-radius:100px;transition:all .4s;white-space:nowrap}
+  .adm-dot{width:7px;height:7px;border-radius:50%;background:#666;transition:all .4s;flex-shrink:0}
+  .adm-dot.live{background:#42b883;box-shadow:0 0 8px #42b883}
+  /* ADM TOP NAV */
+  .adm-topnav{background:#242526;padding:10px 20px;display:flex;align-items:center;gap:24px;border-bottom:1px solid rgba(255,255,255,.06)}
+  .adm-logo-fb{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#e4e6eb}
+  .adm-breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px}
+  .adm-bc{color:#8a8d91;transition:color .3s}
+  .adm-bc.active{color:#e4e6eb;font-weight:600}
+  .adm-bc-sep{color:#444}
+  /* ADM BODY */
+  .adm-body{display:grid;grid-template-columns:170px 1fr;min-height:440px}
+  .adm-sidebar{background:#1e1f22;border-right:1px solid rgba(255,255,255,.06);padding:16px 0}
+  .adm-tree-item{display:flex;align-items:center;gap:8px;padding:9px 16px;font-size:12px;color:#8a8d91;transition:all .3s;cursor:default}
+  .adm-tree-item.sub{padding-left:28px}
+  .adm-tree-item.active{color:#e4e6eb;background:rgba(255,255,255,.07);border-left:2px solid #0866FF;font-weight:600}
+  .adm-center{padding:24px 28px;overflow-y:auto;background:#18191a}
+  /* PANELS */
+  .adm-panel{display:block}
+  .adm-panel.hidden{display:none}
+  .adm-panel-title{font-size:20px;font-weight:700;color:#e4e6eb;margin-bottom:6px;letter-spacing:-.3px}
+  .adm-panel-sub{font-size:12px;color:#8a8d91;margin-bottom:22px}
+  .adm-field{margin-bottom:14px}
+  .adm-field-label{font-size:11px;font-weight:700;color:#b0b3b8;margin-bottom:8px;text-transform:uppercase;letter-spacing:.8px}
+  .adm-field-input{background:#3a3b3c;border:1.5px solid #4a4b4c;border-radius:6px;padding:8px 12px;font-size:12px;color:#e4e6eb;transition:border-color .3s,box-shadow .3s;min-height:36px;display:flex;align-items:center}
+  .adm-field-input.focused{border-color:#0866FF;box-shadow:0 0 0 2px rgba(8,102,255,.2)}
+  .adm-textarea{background:#252627;border:1.5px solid #3a3b3c;border-radius:8px;padding:10px 12px;font-size:12px;color:#e4e6eb;min-height:72px;line-height:1.65;transition:border-color .3s,box-shadow .3s}
+  .adm-textarea.focused{border-color:#1877f2;box-shadow:0 0 0 3px rgba(24,119,242,.12)}
+  .adm-select{background:#3a3b3c;border:1.5px solid #4a4b4c;border-radius:6px;padding:9px 14px;font-size:12px;color:#e4e6eb;display:flex;align-items:center;justify-content:space-between;cursor:default}
+  .adm-cursor{display:inline-block;width:2px;height:13px;background:#e4e6eb;margin-left:1px;vertical-align:middle;animation:blink2 .8s step-end infinite}
+  @keyframes blink2{0%,100%{opacity:1}50%{opacity:0}}
+  .adm-objectives{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .adm-obj{background:#3a3b3c;border:1px solid #4a4b4c;border-radius:8px;padding:10px 8px;text-align:center;cursor:default;transition:all .3s}
+  .adm-obj.selected{border-color:#1877f2;background:rgba(24,119,242,.12)}
+  .adm-obj-icon{font-size:18px;margin-bottom:4px}
+  .adm-obj-label{font-size:10px;color:#b0b3b8;font-weight:600}
+  .adm-budget-row{display:flex;gap:12px}
+  .adm-targeting-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;margin-bottom:18px;align-items:start}
+  .adm-tag-box{background:#3a3b3c;border:1.5px solid #4a4b4c;border-radius:6px;padding:8px 12px;min-height:38px}
+  .adm-loc-tag{background:rgba(24,119,242,.18);border:1px solid rgba(24,119,242,.4);color:#8ab4f8;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:5px;transition:opacity .5s}
+  .adm-age-row{display:flex;align-items:center;gap:8px;padding:4px 0}
+  .adm-age-val{font-size:11px;font-weight:700;color:#e4e6eb}
+  .adm-age-row{display:flex;align-items:center;gap:10px;padding:6px 0}
+  .adm-age-val{font-size:13px;font-weight:700;color:#e4e6eb;min-width:22px;text-align:center}
+  .adm-age-track{flex:1;height:4px;background:rgba(255,255,255,.15);border-radius:2px;overflow:visible;position:relative}
+  .adm-age-fill{height:100%;background:#0866FF;border-radius:2px;width:0%;transition:width 1.2s ease;position:relative}
+  .adm-age-fill::after{content:'';position:absolute;right:-7px;top:-5px;width:13px;height:13px;border-radius:50%;background:#0866FF;border:2px solid #e4e6eb;box-shadow:0 1px 4px rgba(0,0,0,.5)}
+  .adm-gender-row{display:flex;gap:6px}
+  .adm-gender-btn{padding:6px 18px;border-radius:20px;font-size:12px;font-weight:600;border:1.5px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);cursor:default;transition:all .3s;background:transparent}
+  .adm-gender-btn.active{border-color:#0866FF;color:#fff;background:#0866FF;box-shadow:0 0 0 3px rgba(8,102,255,.18)}
+  .adm-interests{display:flex;flex-wrap:wrap;gap:8px;min-height:38px;padding:2px 0}
+  .adm-int-tag{background:#1f3460;border:1px solid #0866FF;color:#8ab4f8;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s;letter-spacing:.1px}
+  .adm-int-tag.show{opacity:1;transform:translateY(0)}
+  /* AD CREATIVE LAYOUT */
+  .adm-ad-layout{display:flex;gap:20px;align-items:flex-start}
+  .adm-form-col{flex:1;min-width:0}
+  .adm-media-zone{width:100%;height:110px;background:linear-gradient(135deg,#2a2b2e,#232425);border:1.5px dashed rgba(255,255,255,.12);border-radius:10px;overflow:hidden;margin-bottom:16px;position:relative;transition:border-color .3s}
+  .adm-media-zone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:9px}
+  .adm-media-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;pointer-events:none}
+  .adm-media-placeholder span{font-size:10px;color:#5a5b5c;font-weight:600;letter-spacing:.5px}
+  .adm-section-divider{display:flex;align-items:center;gap:10px;margin:4px 0 14px}
+  .adm-section-divider span{font-size:10px;font-weight:700;color:#5a5b5c;text-transform:uppercase;letter-spacing:.8px;white-space:nowrap}
+  .adm-section-divider::before,.adm-section-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06)}
+  .adm-field-row{display:flex;gap:10px}
+  .adm-field-row .adm-field{flex:1;min-width:0}
+  .adm-textarea-wrap{position:relative}
+  .adm-char-count{position:absolute;bottom:6px;right:10px;font-size:9px;color:#5a5b5c;font-weight:600;pointer-events:none}
+  .adm-field-label-row{display:flex;align-items:center;gap:5px;margin-bottom:6px}
+  .adm-field-label-row .adm-field-label{margin-bottom:0}
+  .adm-field-badge{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 6px;border-radius:100px;background:rgba(24,119,242,.15);color:#8ab4f8;border:1px solid rgba(24,119,242,.2)}
+  .adm-btn-row{display:flex;gap:8px;margin-top:16px;align-items:center}
+  .adm-publish-btn{background:linear-gradient(135deg,#1877f2,#1a6bdb);color:white;border:none;padding:10px 26px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;transition:all .3s;display:flex;align-items:center;gap:7px;box-shadow:0 4px 14px rgba(24,119,242,.3)}
+  .adm-publish-btn.glow{background:var(--gz);box-shadow:0 0 24px rgba(255,85,0,.5);transform:scale(1.04)}
+  .adm-publish-btn.done{background:linear-gradient(135deg,#42b883,#2d9a6b);box-shadow:0 4px 14px rgba(66,184,131,.3)}
+  .adm-draft-btn{background:transparent;color:#8a8d91;border:1px solid rgba(255,255,255,.1);padding:10px 16px;border-radius:8px;font-size:12px;cursor:pointer;transition:all .25s}
+  .adm-draft-btn:hover{background:rgba(255,255,255,.05);color:#e4e6eb}
+  /* PREVIEW PHONE */
+  .adm-preview-col{width:195px;flex-shrink:0;position:sticky;top:0}
+  .adm-prev-label{font-size:10px;color:#8a8d91;display:flex;align-items:center;gap:5px;margin-bottom:8px;font-weight:600;padding:5px 8px;background:rgba(255,255,255,.03);border-radius:6px;border:1px solid rgba(255,255,255,.06)}
+  .fb-phone-frame{background:#18191a;border-radius:16px;border:1px solid rgba(255,255,255,.1);overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+  .fb-phone-top{background:#242526;padding:8px 12px;display:flex;align-items:center;justify-content:space-between}
+  .fb-phone-logo{font-size:16px;font-weight:900;color:#1877f2;font-family:serif}
+  .fb-phone-feed{padding:10px 8px}
+  .fb-fake-post{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .fb-fake-avatar{width:28px;height:28px;border-radius:50%;background:#3a4a6b;flex-shrink:0}
+  .fb-fake-line{height:8px;background:#3a3b3c;border-radius:4px}
+  .fb-fake-content{margin-bottom:8px}
+  .fb-fake-img{height:50px;background:#2d2e30;border-radius:6px;margin-bottom:10px}
+  .fb-live-ad{background:#242526;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+  .fb-live-header{display:flex;align-items:center;gap:6px;padding:8px 10px}
+  .fb-live-avatar{width:28px;height:28px;background:var(--gz);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;flex-shrink:0}
+  .fb-live-name{font-size:11px;font-weight:700;color:#e4e6eb}
+  .fb-live-sp{font-size:9px;color:#8a8d91}
+  .fb-live-body{padding:4px 10px 8px;font-size:11px;color:#e4e6eb;line-height:1.4;min-height:20px}
+  .fb-live-img-wrap{width:100%;overflow:hidden}
+  .fb-live-img-wrap img{display:block;width:100%}
+  .fb-live-bottom{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:#1c1d1e;gap:4px}
+  .fb-live-domain{font-size:8px;color:#8a8d91;text-transform:uppercase}
+  .fb-live-hl{font-size:11px;font-weight:700;color:#e4e6eb}
+  .fb-live-cta{background:#e4e6eb;color:#050505;border:none;padding:5px 8px;border-radius:4px;font-size:9px;font-weight:700;cursor:pointer;white-space:nowrap}
+  .fb-live-actions{display:flex;justify-content:space-around;padding:6px 8px;border-top:1px solid rgba(255,255,255,.06);font-size:9px;color:#8a8d91}
+  /* SUCCESS OVERLAY */
+  .adm-success{position:absolute;inset:0;background:rgba(7,7,15,.94);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .5s;z-index:20}
+  .adm-success.show{opacity:1}
+  .adm-success-inner{text-align:center}
+  .adm-success-ring{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#42b883,#2d9a6b);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 0 40px rgba(66,184,131,.4);animation:popIn2 .6s cubic-bezier(.34,1.56,.64,1)}
+  @keyframes popIn2{from{transform:scale(0) rotate(-45deg)}to{transform:scale(1) rotate(0)}}
+  .adm-success-title{font-size:24px;font-weight:700;color:#e4e6eb;margin-bottom:6px}
+  .adm-success-sub{font-size:12px;color:#8a8d91;margin-bottom:20px}
+  .adm-success-stats{display:flex;gap:24px;justify-content:center}
+  .adm-ss-val{font-size:18px;font-weight:700;color:#FFB300}
+  .adm-ss-lab{font-size:11px;color:#8a8d91;margin-top:2px}
+  /* VS DIVIDER */
+  .demo-vs-divider{display:flex;align-items:center;gap:24px;margin:52px 0}
+  .dvd-line{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(255,85,0,.25),transparent)}
+  .dvd-center{text-align:center}
+  .dvd-arrow{width:52px;height:52px;border-radius:50%;background:var(--gz);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:white;margin:0 auto 10px;box-shadow:0 0 0 8px rgba(255,85,0,.08),0 0 32px rgba(255,85,0,.35);animation:bounceD 2s ease-in-out infinite}
+  @keyframes bounceD{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+  .dvd-label{font-size:13px;font-weight:700;color:var(--oa);white-space:nowrap;letter-spacing:.3px}
+  /* DIFF LAYOUT */
+  .diff-layout{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+  @media(max-width:900px){.diff-layout{grid-template-columns:1fr;gap:32px}}
+  .diff-desc{font-size:14px;color:var(--t2);line-height:1.75;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--bd0)}
+  .diff-list{list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:7px}
+  .diff-list li{display:flex;align-items:flex-start;gap:11px;padding:11px 14px;border-radius:12px;background:var(--bg3);border:1px solid var(--bd0);transition:background .3s,border-color .3s,transform .3s}
+  .diff-list li:hover{background:rgba(255,85,0,.04);border-color:rgba(255,85,0,.15);transform:translateX(3px)}
+  .diff-check{width:24px;height:24px;border-radius:50%;background:var(--gz);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white;flex-shrink:0;margin-top:1px;box-shadow:0 3px 10px rgba(255,85,0,.28)}
+  .diff-list li strong{display:block;font-size:13px;font-weight:700;color:var(--t0);margin-bottom:2px}
+  .diff-list li p{font-size:12px;color:var(--t2);line-height:1.55;margin:0}
+  .diff-pills{display:flex;flex-wrap:wrap;gap:8px}
+  .diff-pill{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:100px;border:1px solid var(--bd0);font-size:12px;font-weight:600;color:var(--t2);background:var(--bg3);transition:all .25s}
+  .diff-pill:hover{background:rgba(255,85,0,.07);border-color:rgba(255,85,0,.22);color:var(--oa)}
+  /* DIFF CARD (right side — dark) */
+  .diff-right{position:relative}
+  .diff-card{background:linear-gradient(160deg,#0d0d1c 0%,#07070e 100%);border:1px solid rgba(255,110,0,.2);border-radius:20px;padding:18px;box-shadow:0 0 0 1px rgba(255,255,255,.03),inset 0 1px 0 rgba(255,255,255,.07),0 0 60px rgba(255,85,0,.09),0 40px 80px rgba(0,0,0,.6);position:relative;overflow:hidden;transform:perspective(1200px) rotateY(-4deg) rotateX(1deg);transition:transform .4s ease}
+  .diff-card:hover{transform:perspective(1200px) rotateY(-1deg) rotateX(0deg)}
+  .diff-card::before{content:'';position:absolute;top:-50px;right:-40px;width:180px;height:180px;background:radial-gradient(circle,rgba(255,110,0,.16),transparent 65%);pointer-events:none}
+  .diff-card::after{content:'';position:absolute;bottom:-40px;left:-30px;width:140px;height:140px;background:radial-gradient(circle,rgba(255,180,0,.08),transparent 70%);pointer-events:none}
+  .diff-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:13px;border-bottom:1px solid rgba(255,255,255,.07)}
+  .diff-card-tabs{display:flex;gap:5px}
+  .diff-tab{font-size:10.5px;font-weight:700;padding:4px 11px;border-radius:100px;border:1.5px solid rgba(255,255,255,.1);color:#6B7280;cursor:pointer;transition:all .3s;letter-spacing:.2px;user-select:none}
+  .diff-tab:hover{border-color:rgba(255,255,255,.2);color:#9CA3AF;transform:translateY(-1px)}
+  .diff-tab-good.active{background:linear-gradient(135deg,#CC1500,#E83800 38%,#FF7000 70%,#FFB800);color:#fff;border-color:transparent;box-shadow:0 3px 16px rgba(255,85,0,.45),0 0 0 1px rgba(255,100,0,.2)}
+  .diff-tab-bad.active{background:rgba(220,38,38,.13);color:#f87171;border-color:rgba(220,38,38,.28)}
+  .diff-card-live{display:flex;align-items:center;gap:5px;font-size:9px;font-weight:700;color:#34d399;padding:4px 10px;border-radius:100px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);letter-spacing:.4px;text-transform:uppercase}
+  .diff-live-dot{width:6px;height:6px;border-radius:50%;background:#34d399;box-shadow:0 0 7px rgba(52,211,153,.7);animation:livePulse 1.5s ease infinite;flex-shrink:0}
+  @keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+  .diff-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:13px}
+  @media(max-width:500px){.diff-metrics{grid-template-columns:repeat(2,1fr)}}
+  .diff-metric{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:12px 6px;text-align:center;transition:all .5s;position:relative;overflow:hidden}
+  .diff-metric::before{content:'';position:absolute;inset:0;border-radius:12px;background:radial-gradient(ellipse at 50% 0%,rgba(255,160,0,.08),transparent 65%);opacity:0;transition:opacity .5s}
+  .diff-metric.good{border-color:rgba(255,160,0,.22);background:rgba(255,130,0,.05)}
+  .diff-metric.good::before{opacity:1}
+  .diff-metric.bad{border-color:rgba(220,38,38,.15);background:rgba(220,38,38,.04)}
+  .diff-metric-val{font-size:17px;font-weight:800;color:#e4e6eb;margin-bottom:4px;transition:color .4s,opacity .3s;line-height:1;letter-spacing:-.5px}
+  .diff-metric.good .diff-metric-val{color:#FBBF24;text-shadow:0 0 18px rgba(251,191,36,.35)}
+  .diff-metric.bad .diff-metric-val{color:#f87171}
+  .diff-metric-lbl{font-size:8px;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+  .diff-section-label{font-size:8px;font-weight:700;color:#4B5563;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+  .diff-section-label::after{content:'';flex:1;height:1px;background:linear-gradient(to right,rgba(255,255,255,.08),transparent)}
+  .diff-audience{display:flex;flex-direction:column;gap:5px;margin-bottom:4px}
+  .diff-aud-row{display:flex;align-items:center;gap:8px}
+  .diff-aud-icon{font-size:12px;width:22px;text-align:center;flex-shrink:0}
+  .diff-aud-tag{font-size:11px;font-weight:600;padding:5px 12px;border-radius:100px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);color:#6B7280;transition:all .55s}
+  .diff-aud-tag.highlight{background:rgba(251,191,36,.09);border-color:rgba(251,191,36,.28);color:#FBBF24;box-shadow:0 2px 10px rgba(251,191,36,.12),inset 0 0 0 1px rgba(251,191,36,.06)}
+  .diff-bars{display:flex;flex-direction:column;gap:9px;margin-bottom:13px}
+  .diff-bar-row{display:flex;align-items:center;gap:9px}
+  .diff-bar-lbl{font-size:10px;color:#6B7280;width:46px;flex-shrink:0;font-weight:600;letter-spacing:.2px}
+  .diff-bar-track{flex:1;height:7px;background:rgba(255,255,255,.05);border-radius:5px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.3)}
+  .diff-bar-fill{height:100%;border-radius:5px;transition:width 1.8s cubic-bezier(.22,1,.36,1)}
+  .diff-bar-red{background:linear-gradient(90deg,#7f1d1d,#ef4444)}
+  .diff-bar-orange{background:linear-gradient(90deg,#CC1500,#E83800 38%,#FF7000 70%,#FFB800);box-shadow:0 0 10px rgba(255,160,0,.4)}
+  .diff-bar-num{font-size:11px;font-weight:800;color:#6B7280;width:34px;text-align:right;letter-spacing:-.2px}
+  .diff-bar-num-good{color:#FBBF24;text-shadow:0 0 10px rgba(251,191,36,.3)}
+  .diff-notif-area{min-height:32px;display:flex;flex-direction:column;gap:5px}
+  .diff-notif{background:rgba(52,211,153,.05);border:1px solid rgba(52,211,153,.18);border-radius:10px;padding:7px 12px;font-size:10.5px;color:#34d399;font-weight:600;display:flex;align-items:center;gap:8px;opacity:0;transform:translateY(8px);transition:all .45s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden;letter-spacing:.1px}
+  .diff-notif::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#34d399,#10b981);border-radius:2px 0 0 2px}
+  .diff-notif.show{opacity:1;transform:translateY(0)}
+  .diff-process-strip{display:flex;align-items:center;gap:8px;margin-top:10px;padding:9px 13px;border-radius:12px;background:linear-gradient(135deg,rgba(255,85,0,.05),rgba(255,160,0,.03));border:1px solid rgba(255,100,0,.14);font-size:10px;color:#9CA3AF;font-weight:600;min-height:36px;transition:opacity .4s;letter-spacing:.2px}
+  @keyframes spinCog{to{transform:rotate(360deg)}}
+  .diff-process-strip svg{animation:spinCog 3s linear infinite;flex-shrink:0;width:11px;height:11px}
+  /* RESPONSIVE */
+  @media(max-width:900px){.adm-body{grid-template-columns:1fr}.adm-sidebar{display:none}.adm-objectives{grid-template-columns:repeat(2,1fr)}.adm-targeting-grid{grid-template-columns:1fr}.adm-preview-col{display:none}.adm-ad-layout{flex-direction:column}.demo-vs-divider{margin:36px 0}}
+  @media(max-width:640px){.adm-budget-row{flex-direction:column}.adm-center{padding:16px}.adm-objectives{gap:6px}.adm-obj{padding:8px 6px}.adm-obj-icon{font-size:15px}.diff-metrics{grid-template-columns:repeat(2,1fr)}.diff-metric{padding:9px 6px}.diff-metric-val{font-size:15px}.diff-card{padding:14px;transform:none}.diff-card:hover{transform:none}}
+
+  /* ── Mobile responsive fixes ── */
+  @media(max-width:520px){
+    .nright{gap:8px}
+    .btn.bfire.bsm{padding:9px 13px;font-size:13px}
+  }
+  @media(max-width:400px){
+    #navAuthBtn{display:none!important}
+    .nright{gap:6px}
+    .btn.bfire.bsm{padding:8px 11px;font-size:12.5px}
+  }
+  @media(max-width:480px){
+    .ftgrid{grid-template-columns:1fr!important;gap:18px}
+    .ftgrid>div:first-child{grid-column:auto}
+  }
+  @media(max-width:380px){
+    .ogitems{grid-template-columns:1fr}
+    .numgrid{grid-template-columns:1fr;gap:10px}
+    .adm-objectives{grid-template-columns:1fr}
+    .diff-metrics{grid-template-columns:1fr}
+    .hcta{gap:8px}
+  }
+  @media(max-width:360px){
+    .bsf2{grid-template-columns:1fr}
+    .bsi{font-size:14px}
+  }
+  @media(max-width:640px) and (orientation:landscape){
+    #hero{padding:48px 0 36px}
+    .ht{font-size:clamp(22px,5vw,32px)}
+  }
+  </style>
+</head>
+<body>
+<div id="spbar"></div>
+
+<!-- ═══ TOP NOTIFICATION BAR ══════════════════════════════ -->
+<div id="topbar">
+  <span class="tb-dot"></span>
+  <span class="tb-text">🔥 সীমিত অফার — এই সপ্তাহে মাত্র <strong>৫টি</strong> ফ্রি অডিট স্লট বাকি আছে</span>
+  <a href="#" class="tb-cta" onclick="openSheet();return false;">এখনই নিন →</a>
+  <button class="tb-x" onclick="this.parentElement.style.display='none'" aria-label="বন্ধ করুন">×</button>
+</div>
+
+<!-- ═══ NAV ══════════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="nw">
+    <a href="#" class="nbrand">
+      <!-- Z logo: fire top bar + dark metallic diagonal + dark bottom bar -->
+      <svg width="30" height="30" viewBox="0 0 36 36" fill="none">
+        <defs>
+          <linearGradient id="nt" x1="3" y1="6" x2="33" y2="6" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stop-color="#CC1500"/>
+            <stop offset="38%"  stop-color="#E83800"/>
+            <stop offset="68%"  stop-color="#FF7200"/>
+            <stop offset="100%" stop-color="#FFB800"/>
+          </linearGradient>
+          <linearGradient id="ndg" x1="7" y1="11" x2="29" y2="26" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stop-color="#FF4200"/>
+            <stop offset="36%"  stop-color="#BB2000"/>
+            <stop offset="52%"  stop-color="#242430"/>
+            <stop offset="100%" stop-color="#0F0F18"/>
+          </linearGradient>
+          <linearGradient id="ndb" x1="3" y1="30" x2="33" y2="30" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stop-color="#181824"/>
+            <stop offset="100%" stop-color="#28283A"/>
+          </linearGradient>
+        </defs>
+        <!-- Top bar: fire -->
+        <rect x="3" y="3" width="30" height="8" rx="2" fill="url(#nt)"/>
+        <!-- Diagonal: fire→dark metallic -->
+        <polygon points="29,11 7,25 18,25 32,11" fill="url(#ndg)"/>
+        <!-- Bottom bar: dark metallic -->
+        <rect x="3" y="25" width="30" height="8" rx="2" fill="url(#ndb)"/>
+        <!-- Highlight spark -->
+        <ellipse cx="22" cy="18.5" rx="2.2" ry="1.1" fill="white" opacity=".65" transform="rotate(-38 22 18.5)"/>
+      </svg>
+      <span class="nword">GrowlyZ</span>
+    </a>
+    <div class="nright">
+      <a href="#framework" class="nl">আমাদের সিস্টেম</a>
+      <a href="#why"       class="nl">কেন আমরা</a>
+      <a href="#faq"       class="nl">FAQ</a>
+      <a href="http://localhost:3001/login" id="navAuthBtn" class="btn be bsm nav-login-btn" style="gap:7px;font-size:13px;padding:8px 17px">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" class="login-icon" style="flex-shrink:0"><circle cx="8" cy="5.5" r="3.2"/><path d="M2 18c0-3.31 2.69-6 6-6s6 2.69 6 6z"/><path d="M13.8 15.3v-1a2.2 2.2 0 0 1 4.4 0v1" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/><rect x="12.8" y="15.3" width="6.4" height="4.5" rx="1.1"/><circle cx="16" cy="17.3" r="0.72" fill="white"/></svg>
+        ক্লায়েন্ট লগইন
+      </a>
+      <a href="#cta" class="btn bfire bsm">
+        <svg width="11" height="11" viewBox="0 0 13 13" fill="none"><circle cx="5.5" cy="5.5" r="4" stroke="#fff" stroke-width="1.3"/><path d="M8.5 8.5L12 12" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/><path d="M4 5.5l1.2 1.2L7.5 4" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        ফ্রি অডিট
+      </a>
+      <button class="nhbg" id="nhbg" aria-label="মেনু">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile drawer -->
+  <div id="nmob">
+    <a href="#framework" class="nml">⚙️ আমাদের সিস্টেম</a>
+    <a href="#problem"   class="nml">⚡ সমস্যা বনাম সমাধান</a>
+    <a href="#why"       class="nml">💡 কেন GrowlyZ</a>
+    <a href="#process"   class="nml">🗺️ কিভাবে কাজ করে</a>
+    <a href="#faq"       class="nml">❓ FAQ</a>
+    <a href="http://localhost:3001/login" id="mobAuthBtn" class="nml" style="color:var(--oa);font-weight:700;display:inline-flex;align-items:center;gap:7px"><svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor" style="flex-shrink:0"><circle cx="8" cy="5.5" r="3.2"/><path d="M2 18c0-3.31 2.69-6 6-6s6 2.69 6 6z"/><path d="M13.8 15.3v-1a2.2 2.2 0 0 1 4.4 0v1" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/><rect x="12.8" y="15.3" width="6.4" height="4.5" rx="1.1"/><circle cx="16" cy="17.3" r="0.72" fill="white"/></svg> ক্লায়েন্ট লগইন</a>
+    <a href="#cta"       class="nml nml-cta">🎯 ফ্রি অডিট নিন</a>
+  </div>
+</nav>
+
+
+<!-- ═══ HERO ══════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hi">
+    <div class="hbadge">
+      <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="url(#hbg)"/><defs><linearGradient id="hbg" x1="0" y1="0" x2="10" y2="10"><stop stop-color="#CC1500"/><stop offset="1" stop-color="#FFB800"/></linearGradient></defs></svg>
+      বাংলাদেশের #১ পারফরমেন্স মার্কেটিং এজেন্সি
+    </div>
+    <h1 class="ht">
+      <span class="tp">বিজ্ঞাপন চলছে। টাকা পুড়ছে।</span><br/>
+      <span class="tp">তবুও বিক্রি নেই?</span><br/>
+      <span class="ts">সমস্যা বিজ্ঞাপনে নয়। সমস্যা আপনার সিস্টেমে।</span>
+    </h1>
+    <p class="hsub">আপনার প্রতিযোগী একই প্ল্যাটফর্মে বিজ্ঞাপন দিয়ে ৩× বেশি বিক্রি করছে — কারণ তাদের সিস্টেম আছে, বিজ্ঞাপন নয়। সঠিক ট্র্যাকিং, হাই-কনভার্টিং ফানেল আর ডেটা-চালিত স্ট্র্যাটেজি ছাড়া আপনার বাজেট পুড়তেই থাকবে। GrowlyZ আপনার পুরো মার্কেটিং সিস্টেম তৈরি করে — ট্র্যাকিং থেকে স্কেলিং পর্যন্ত।</p>
+    <div class="crow hcta">
+      <a href="#cta" class="btn bfire bmd">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="6.2" cy="6.2" r="4.7" stroke="#fff" stroke-width="1.4"/><path d="M10 10l3.5 3.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M4.5 6.2l1.4 1.4 2.4-2.4" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        ফ্রি মার্কেটিং অডিট পান
+      </a>
+      <a href="https://wa.me/880154314108" class="btn bw bmd">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="#fff"><path d="M7.5 1C3.91 1 1 3.91 1 7.5c0 1.18.31 2.28.86 3.24L1 14l3.29-.84A6.47 6.47 0 0 0 7.5 14C11.09 14 14 11.09 14 7.5S11.09 1 7.5 1zm3.28 8.91c-.14.38-.82.74-1.12.79-.28.04-.64.06-1.04-.07-.24-.08-.56-.18-.88-.36C6.52 9.72 5.43 8.5 5.04 7.93c-.26-.37-.4-.78-.4-1.19v-.02c0-.39.15-.73.4-.99.11-.12.24-.18.34-.18h.24c.11 0 .22.04.31.28l.4 1.01c.09.22.04.46-.09.63l-.2.24c-.06.07-.08.17-.03.27.22.43.6.93 1.07 1.33.46.4.98.67 1.42.81.1.04.21.02.29-.06l.25-.28c.17-.18.4-.24.64-.14l.96.46c.24.11.24.41.24.54v.19c0 .11-.06.23-.12.35z"/></svg>
+        WhatsApp করুন
+      </a>
+    </div>
+    <div class="hstats">
+      <div class="hstat"><span class="hstat-v f">৩×</span><span class="hstat-d"></span><span class="hstat-l">গড় ROAS বৃদ্ধি</span></div>
+      <div class="hstat"><span class="hstat-v e">০%</span><span class="hstat-d"></span><span class="hstat-l">ডেটা লস (CAPI)</span></div>
+      <div class="hstat"><span class="hstat-v f">৭ দিন</span><span class="hstat-d"></span><span class="hstat-l">সিস্টেম লাইভ</span></div>
+      <div class="hstat"><span class="hstat-v e">২৪/৭</span><span class="hstat-d"></span><span class="hstat-l">অটোমেটেড ফানেল</span></div>
+    </div>
+  </div>
+  <div class="spark"></div>
+</section>
+
+
+<!-- ═══ TOOLS STRIP ════════════════════════════════════════ -->
+<div id="tools">
+  <div class="tmarquee">
+      <div class="tstrip">
+        <span class="tlbl">আমরা যেসব টুল ব্যবহার করি</span>
+        <span class="ttag">Meta Ads</span>
+        <span class="ttag">Google Ads</span>
+        <span class="ttag">Google Tag Manager</span>
+        <span class="ttag">Conversions API</span>
+        <span class="ttag">Google Analytics 4</span>
+        <span class="ttag">Shopify</span>
+        <span class="ttag">WooCommerce</span>
+        <span class="ttag">TikTok Ads</span>
+      </div>
+      <!-- duplicate for seamless mobile loop -->
+      <div class="tstrip tstrip-dup" aria-hidden="true">
+        <span class="ttag">Meta Ads</span>
+        <span class="ttag">Google Ads</span>
+        <span class="ttag">Google Tag Manager</span>
+        <span class="ttag">Conversions API</span>
+        <span class="ttag">Google Analytics 4</span>
+        <span class="ttag">Shopify</span>
+        <span class="ttag">WooCommerce</span>
+        <span class="ttag">TikTok Ads</span>
+      </div>
+    </div>
+</div>
+
+
+<!-- ═══ PROBLEM VS SOLUTION ════════════════════════════════ -->
+<section class="s s2" id="problem">
+  <div class="w">
+    <div style="text-align:center;margin-bottom:48px">
+      <span class="eye ef">⚡ কঠিন সত্য</span>
+      <h2 class="sec">বিজ্ঞাপন চালাচ্ছেন, কিন্তু<br/><span class="tz">আসলে কি হচ্ছে জানেন?</span></h2>
+      <p class="sub" style="max-width:520px;margin:0 auto">বাম কার্ডে নিজেকে দেখছেন? এটা আপনার দোষ নয় — এটা সিস্টেমের অভাব। ডান কার্ড মাত্র একটি সিদ্ধান্তের দূরত্বে।</p>
+    </div>
+    <div class="vswrap">
+      <div class="vscard vsl">
+        <div class="vsbadge vbb">✕ GrowlyZ ছাড়া</div>
+        <h3>টাকা পুড়ছে। ফলাফল নেই। এবং কেউ বলছে না কেন।</h3>
+        <div class="cbox">
+          <span class="cp cp1">📣 Ads</span><span class="cp cp2">👁 Pixel</span>
+          <span class="cp cp3">🎯 Targeting</span><span class="cp cp4">✍️ Content</span>
+          <span class="cp cp5">🚪 Funnel</span>
+        </div>
+        <div class="vsmet vmb">
+          <div class="vmico">📉</div>
+          <div><div class="vmnum">—৳50,000+<span class="vmunit">/month</span></div><div class="vmlbl">প্রতি মাসে নীরবে নষ্ট</div></div>
+        </div>
+        <ul class="vsl-list">
+          <li><span class="vlic vlicb">✕</span>কোন বিজ্ঞাপন থেকে বিক্রি এলো — কোনো ধারণা নেই</li>
+          <li><span class="vlic vlicb">✕</span>৩০–৫০% কনভার্শন ট্র্যাকই হচ্ছে না — ভুল ডেটায় ভুল সিদ্ধান্ত</li>
+          <li><span class="vlic vlicb">✕</span>ফানেল নেই — ভিজিটর আসে, দেখে, চলে যায়</li>
+          <li><span class="vlic vlicb">✕</span>রিটার্গেটিং নেই — আগ্রহী ক্রেতারা প্রতিযোগীর কাছে যাচ্ছে</li>
+        </ul>
+      </div>
+      <div class="vssep">
+        <div class="vsline vstop"></div>
+        <div class="vscirc">VS</div>
+        <div class="vsline vsbot"></div>
+      </div>
+      <div class="vscard vsr">
+        <div class="vsbadge vbg">✓ GrowlyZ-এর সাথে</div>
+        <h3>একটি সিস্টেম। সব কিছু সংযুক্ত।</h3>
+        <div class="ogrid">
+          <div class="oghd"><span class="ogd ogd1"></span><span class="ogd ogd2"></span><span class="ogd ogd3"></span><span class="ogbn">GrowlyZ সিস্টেম</span></div>
+          <div class="ogitems">
+            <div class="ogitem"><span class="ogico ogico-f"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4" stroke="white" stroke-width="1.4"/><path d="M9 9l2.8 2.8" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M4.8 6h2.4M6 4.8v2.4" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg></span>Tracking</div><div class="ogitem"><span class="ogico ogico-f"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M2 2.5h10L8 7v4l-2-1V7L2 2.5z" stroke="white" stroke-width="1.3" stroke-linejoin="round"/></svg></span>Funnel</div><div class="ogitem"><span class="ogico ogico-m"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M3.5 3.5L1.5 7l2 3.5M10.5 3.5L12.5 7l-2 3.5M8 1.5l-2 11" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>GTM</div>
+            <div class="ogitem"><span class="ogico ogico-m"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M7.5 1.5L4 7.5h4L5.5 12.5" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>CAPI</div><div class="ogitem"><span class="ogico ogico-e"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="white" stroke-width="1.3"/><circle cx="7" cy="7" r="1.8" fill="white"/><path d="M7 2v1.5M7 10.5V12M2 7h1.5M10.5 7H12" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg></span>Strategy</div><div class="ogitem"><span class="ogico ogico-e"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M1.5 10l3-3.5 2.5 2.5L10.5 4l2-1.5" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 2.5h2.5v2.5" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Scale</div>
+          </div>
+        </div>
+        <div class="vsmet vmg">
+          <div class="vmico">📈</div>
+          <div><div class="vmnum">+3× ROAS<span class="vmunit">/month avg.</span></div><div class="vmlbl">গড় উন্নতি</div></div>
+        </div>
+        <ul class="vsl-list">
+          <li><span class="vlic vlicg">✓</span>রিয়েল-টাইম ডেটা — প্রতিটি ক্লিক, সেল, সোর্স দেখুন</li>
+          <li><span class="vlic vlicg">✓</span>সার্ভার-সাইড ট্র্যাকিং — ০% ডেটা লস, ১০০% নির্ভুল</li>
+          <li><span class="vlic vlicg">✓</span>পূর্ণ ফানেল + রিটার্গেটিং — কেউ ফাঁকে পড়ে না</li>
+          <li><span class="vlic vlicg">✓</span>অটোমেটেড ফানেল — ঘুমের মধ্যেও কনভার্ট হয়</li>
+        </ul>
+      </div>
+    </div>
+    <div class="vcta">
+      <p>😟 বাম কার্ডটা চেনা লাগছে তো?</p>
+      <p>এটা আপনার একার সমস্যা নয় — বাংলাদেশের ৯০% ব্যবসার একই অবস্থা। পার্থক্য শুধু একটাই: যারা সিস্টেম তৈরি করেছে, তারা এগিয়ে যাচ্ছে। ফ্রি অডিট নিন, জানুন আপনার টাকা ঠিক কোথায় যাচ্ছে।</p>
+      <a href="#cta" class="btn bfire bmd">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="5.8" cy="5.8" r="4.3" stroke="#fff" stroke-width="1.4"/><path d="M9 9l3.2 3.2" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M4 5.8l1.3 1.3 2.2-2.2" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        আমার ব্যবসার অডিট করুন — ১০০% ফ্রি
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ ADS MOCKUP (DYNAMIC) ══════════════════════════════ -->
+<div id="adsmock">
+  <div class="amwrap">
+    <div class="amhead reveal">
+      <span class="eye ef">📢 সাধারণ বিজ্ঞাপন — এভাবেই সবাই করে</span>
+      <p>Campaign তৈরি থেকে Published পর্যন্ত — কিন্তু কোনো সিস্টেম নেই, শুধু বাজেট পোড়ে</p>
+    </div>
+    <div class="adm-window reveal" style="margin-bottom:64px;">
+      <div class="adm-chrome">
+        <div class="adm-chrome-dots"><span style="background:#ff5f57"></span><span style="background:#ffbd2e"></span><span style="background:#28ca41"></span></div>
+        <div class="adm-chrome-url">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8a8d91" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          facebook.com/adsmanager/creation
+        </div>
+        <div class="adm-status-badge" id="admStatus"><span class="adm-dot" id="admDot"></span><span id="admStatusTxt">In Draft</span></div>
+      </div>
+      <div class="adm-topnav">
+        <div class="adm-logo-fb">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877f2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <span>Ads Manager</span>
+        </div>
+        <div class="adm-breadcrumb">
+          <span id="bc1" class="adm-bc active">📁 New Campaign</span>
+          <span class="adm-bc-sep">›</span>
+          <span id="bc2" class="adm-bc">⊞ New Ad Set</span>
+          <span class="adm-bc-sep">›</span>
+          <span id="bc3" class="adm-bc">▣ New Ad</span>
+        </div>
+      </div>
+      <div class="adm-body">
+        <div class="adm-sidebar">
+          <div class="adm-tree-item active" id="tree1">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            New Campaign
+          </div>
+          <div class="adm-tree-item sub" id="tree2">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            New Ad Set
+          </div>
+          <div class="adm-tree-item sub" id="tree3">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            New Ad
+          </div>
+        </div>
+        <div class="adm-center">
+          <!-- PANEL 1: Campaign Settings -->
+          <div class="adm-panel" id="panel1">
+            <div class="adm-panel-title">Campaign Settings</div>
+            <div class="adm-panel-sub">Choose your campaign objective and budget</div>
+            <div class="adm-field">
+              <div class="adm-field-label">Campaign Name</div>
+              <div class="adm-field-input focused"><span id="cname-typed"></span><span class="adm-cursor" id="cname-cur">|</span></div>
+            </div>
+            <div class="adm-field">
+              <div class="adm-field-label">Campaign Objective</div>
+              <div class="adm-objectives">
+                <div class="adm-obj" id="obj-sales"><div class="adm-obj-icon">🛒</div><div class="adm-obj-label">Sales</div></div>
+                <div class="adm-obj" id="obj-traffic"><div class="adm-obj-icon">🔗</div><div class="adm-obj-label">Traffic</div></div>
+                <div class="adm-obj" id="obj-awareness"><div class="adm-obj-icon">📢</div><div class="adm-obj-label">Awareness</div></div>
+                <div class="adm-obj" id="obj-leads"><div class="adm-obj-icon">🎯</div><div class="adm-obj-label">Leads</div></div>
+              </div>
+            </div>
+            <div class="adm-budget-row">
+              <div class="adm-field" style="flex:1">
+                <div class="adm-field-label">Budget Type</div>
+                <div class="adm-select">Daily Budget ▾</div>
+              </div>
+              <div class="adm-field" style="flex:1">
+                <div class="adm-field-label">Daily Budget</div>
+                <div class="adm-field-input focused"><span style="color:#8a8d91">৳ </span><span id="budget-typed"></span><span class="adm-cursor" id="budget-cur" style="display:none">|</span></div>
+              </div>
+            </div>
+          </div>
+          <!-- PANEL 2: Audience & Targeting -->
+          <div class="adm-panel hidden" id="panel2">
+            <div class="adm-panel-title">Audience &amp; Targeting</div>
+            <div class="adm-panel-sub">Define who sees your ad — no custom audience, interest-based only</div>
+            <div class="adm-targeting-grid">
+              <div class="adm-field" style="margin-bottom:0">
+                <div class="adm-field-label">📍 LOCATION</div>
+                <div class="adm-tag-box" style="min-height:42px;display:flex;align-items:center"><span class="adm-loc-tag" id="loc-tag" style="opacity:0">🇧🇩 Bangladesh</span></div>
+              </div>
+              <div class="adm-field" style="margin-bottom:0">
+                <div class="adm-field-label">AGE RANGE</div>
+                <div class="adm-age-row">
+                  <div class="adm-age-val" id="age-min">22</div>
+                  <div class="adm-age-track"><div class="adm-age-fill" id="age-fill" style="width:55%"></div></div>
+                  <div class="adm-age-val" id="age-max">40</div>
+                </div>
+              </div>
+            </div>
+            <div class="adm-field">
+              <div class="adm-field-label">GENDER</div>
+              <div class="adm-gender-row">
+                <div class="adm-gender-btn" id="gen-all">All</div>
+                <div class="adm-gender-btn" id="gen-women">Women</div>
+                <div class="adm-gender-btn" id="gen-men">Men</div>
+              </div>
+            </div>
+            <div class="adm-field">
+              <div class="adm-field-label">INTERESTS <span style="color:#6a6b6c;font-size:10px;font-weight:500;text-transform:none;letter-spacing:0">(DETAILED TARGETING — NO CUSTOM DATA)</span></div>
+              <div class="adm-interests" id="interests-box"></div>
+            </div>
+            <div class="adm-field">
+              <div class="adm-field-label">PLACEMENTS</div>
+              <div class="adm-select">Automatic Placements (Recommended) ▾</div>
+            </div>
+          </div>
+          <!-- PANEL 3: Ad Creative -->
+          <div class="adm-panel hidden" id="panel3">
+            <div class="adm-panel-title">Ad Creative</div>
+            <div class="adm-panel-sub">Add your media and write high-converting copy</div>
+            <div class="adm-ad-layout">
+              <div class="adm-form-col">
+                <div class="adm-section-divider"><span>Media</span></div>
+                <div class="adm-media-zone" id="adMediaZone">
+                  <img src="product.png" alt="Baby Dress" id="adMediaImg" style="opacity:0;transition:opacity .5s ease;"/>
+                  <div class="adm-media-placeholder" id="adMediaPh">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6a6b6c" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                    <span>Upload Image or Video</span>
+                  </div>
+                </div>
+                <div class="adm-section-divider"><span>Ad Copy</span></div>
+                <div class="adm-field">
+                  <div class="adm-field-label-row"><div class="adm-field-label">Primary Text</div><span class="adm-field-badge">Required</span></div>
+                  <div class="adm-textarea-wrap">
+                    <div class="adm-textarea focused"><span id="ad-typed1"></span><span class="adm-cursor" id="ad-cur1">|</span></div>
+                    <span class="adm-char-count" id="adCharCount">0 / 125</span>
+                  </div>
+                </div>
+                <div class="adm-field">
+                  <div class="adm-field-label">Headline</div>
+                  <div class="adm-field-input"><span id="ad-typed2"></span><span class="adm-cursor" id="ad-cur2" style="display:none">|</span></div>
+                </div>
+                <div class="adm-section-divider"><span>Settings</span></div>
+                <div class="adm-field-row">
+                  <div class="adm-field"><div class="adm-field-label">Call to Action</div><div class="adm-select">Shop Now ▾</div></div>
+                  <div class="adm-field"><div class="adm-field-label">Destination URL</div><div class="adm-field-input" style="color:#5a5b5c;font-size:11px">https://sadakidz.shop</div></div>
+                </div>
+                <div class="adm-btn-row">
+                  <button class="adm-publish-btn" id="admPublishBtn">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+                    <span id="admBtnTxt">Publish</span>
+                  </button>
+                  <button class="adm-draft-btn">Save Draft</button>
+                </div>
+              </div>
+              <div class="adm-preview-col">
+                <div class="adm-prev-label">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8a8d91" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  Preview · Facebook Feed
+                </div>
+                <div class="fb-phone-frame">
+                  <div class="fb-phone-top">
+                    <div class="fb-phone-logo">f</div>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e4e6eb" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                  </div>
+                  <div class="fb-phone-feed">
+                    <div class="fb-fake-post">
+                      <div class="fb-fake-avatar"></div>
+                      <div><div class="fb-fake-line" style="width:80px"></div><div class="fb-fake-line" style="width:50px;margin-top:4px;opacity:.5"></div></div>
+                    </div>
+                    <div class="fb-fake-content">
+                      <div class="fb-fake-line" style="width:90%"></div>
+                      <div class="fb-fake-line" style="width:70%;margin-top:4px"></div>
+                    </div>
+                    <div class="fb-fake-img"></div>
+                    <div class="fb-live-ad">
+                      <div class="fb-live-header">
+                        <div class="fb-live-avatar">SK</div>
+                        <div><div class="fb-live-name">Sadia Kids Shop</div><div class="fb-live-sp">Sponsored · 🌐</div></div>
+                        <div style="margin-left:auto;color:#8a8d91;font-size:14px">···</div>
+                      </div>
+                      <div class="fb-live-body" id="fb-live-text">🍓 আপনার ছোট্ট মেয়েটির জন্য...</div>
+                      <div class="fb-live-img-wrap"><img src="product.png" alt="Baby Dress" id="fbLiveImg" style="opacity:0;transition:opacity .6s ease;width:100%;display:block"/></div>
+                      <div class="fb-live-bottom">
+                        <div><div class="fb-live-domain">sadakidz.shop</div><div class="fb-live-hl" id="fb-live-hl">Order Today</div></div>
+                        <button class="fb-live-cta">Shop Now</button>
+                      </div>
+                      <div class="fb-live-actions"><span>👍 Like</span><span>💬 Comment</span><span>↗ Share</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="adm-success" id="admSuccess">
+        <div class="adm-success-inner">
+          <div class="adm-success-ring"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="adm-success-title">Campaign Published!</div>
+          <div class="adm-success-sub">🇧🇩 Bangladesh · Women 22–40 · Baby Clothing Interest</div>
+          <div class="adm-success-stats">
+            <div><div class="adm-ss-val">৳500/day</div><div class="adm-ss-lab">Budget Active</div></div>
+            <div><div class="adm-ss-val" style="color:#42b883">Live</div><div class="adm-ss-lab">Status</div></div>
+            <div><div class="adm-ss-val">15</div><div class="adm-ss-lab">Placements</div></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /adm-window -->
+
+    <!-- VS Divider -->
+    <div class="demo-vs-divider reveal">
+      <div class="dvd-line"></div>
+      <div class="dvd-center">
+        <div class="dvd-arrow">↓</div>
+        <div class="dvd-label">How GrowlyZ Does It</div>
+      </div>
+      <div class="dvd-line"></div>
+    </div>
+
+    <!-- Two-column comparison -->
+    <div class="diff-layout reveal">
+      <div class="diff-left">
+        <p class="diff-desc">বেশিরভাগ ব্যবসা প্রতি মাসে হাজার হাজার টাকা বিজ্ঞাপনে ঢালে — কিন্তু বিক্রি আসে না। কারণ সহজ: কোনো ডেটা নেই, কোনো গবেষণা নেই, শুধু অনুমান। আমরা সেটা করি না।</p>
+        <ul class="diff-list">
+          <li><span class="diff-check">✓</span><div><strong>আগে গবেষণা, পরে বিজ্ঞাপন</strong><p>Competitor analysis, audience behavior, pricing data — সব বিশ্লেষণের পর campaign তৈরি করি</p></div></li>
+          <li><span class="diff-check">✓</span><div><strong>ডেটা-চালিত Precision Targeting</strong><p>Custom audience, lookalike, retargeting — শুধু তাদের কাছে দেখাই যারা কিনতে প্রস্তুত</p></div></li>
+          <li><span class="diff-check">✓</span><div><strong>Psychology-Based Copy &amp; Hooks</strong><p>Customer pain-point, headline psychology ও price anchoring ব্যবহার করে ad copy তৈরি</p></div></li>
+          <li><span class="diff-check">✓</span><div><strong>Server-Side Pixel + Conversion API</strong><p>৯৫%+ conversion track হয় — কোনো sales data হারিয়ে যায় না</p></div></li>
+        </ul>
+      </div>
+      <div class="diff-right">
+        <div class="diff-card">
+          <div class="diff-card-top">
+            <div class="diff-card-tabs">
+              <span class="diff-tab diff-tab-bad" id="diffTabBad">❌ Normal Ads</span>
+              <span class="diff-tab diff-tab-good active" id="diffTabGood">✅ GrowlyZ</span>
+            </div>
+            <div class="diff-card-live"><span class="diff-live-dot"></span>Live Data</div>
+          </div>
+          <div class="diff-metrics">
+            <div class="diff-metric good" id="diffMetRoas"><div class="diff-metric-val" id="diffRoasVal">4.2×</div><div class="diff-metric-lbl">ROAS</div></div>
+            <div class="diff-metric good"><div class="diff-metric-val" id="diffCpcVal">৳18</div><div class="diff-metric-lbl">CPC</div></div>
+            <div class="diff-metric good"><div class="diff-metric-val" id="diffSalesVal">47</div><div class="diff-metric-lbl">Sales</div></div>
+            <div class="diff-metric good"><div class="diff-metric-val" id="diffCpaVal">৳95</div><div class="diff-metric-lbl">CPA</div></div>
+          </div>
+          <div class="diff-section-label">Audience Targeting</div>
+          <div class="diff-audience">
+            <div class="diff-aud-row"><span class="diff-aud-icon">📍</span><span class="diff-aud-tag highlight" id="daudLoc">Bangladesh — Dhaka, CTG</span></div>
+            <div class="diff-aud-row"><span class="diff-aud-icon">👤</span><span class="diff-aud-tag highlight" id="daudAge">Women 22–38, Custom Audience</span></div>
+            <div class="diff-aud-row"><span class="diff-aud-icon">🎯</span><span class="diff-aud-tag highlight" id="daudType">Lookalike + Retargeting</span></div>
+          </div>
+          <div class="diff-section-label" style="margin-top:14px">Performance vs Normal Ads</div>
+          <div class="diff-bars">
+            <div class="diff-bar-row"><span class="diff-bar-lbl">Normal</span><div class="diff-bar-track"><div class="diff-bar-fill diff-bar-red" id="diffBar1" style="width:12%"></div></div><span class="diff-bar-num" id="diffBarNum1">0.4×</span></div>
+            <div class="diff-bar-row"><span class="diff-bar-lbl">GrowlyZ</span><div class="diff-bar-track"><div class="diff-bar-fill diff-bar-orange" id="diffBar2" style="width:82%"></div></div><span class="diff-bar-num diff-bar-num-good" id="diffBarNum2">4.2×</span></div>
+          </div>
+          <div class="diff-notif-area" id="diffNotifArea"></div>
+        </div>
+        <div class="diff-process-strip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          <span id="diffProcessTxt">Analyzing market data...</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ── ADS MANAGER ANIMATION ────────────────────── */
+(function(){
+  var phase=1, phTimer=null;
+  var PHASE_DUR=[6000,5000,8000];
+
+  function activate(panelId,treeId,bcId){
+    ['panel1','panel2','panel3'].forEach(function(id){var e=document.getElementById(id);if(e)e.className='adm-panel hidden';});
+    var p=document.getElementById(panelId);if(p)p.className='adm-panel';
+    ['tree1','tree2','tree3'].forEach(function(id){var e=document.getElementById(id);if(e)e.className='adm-tree-item'+(id!=='tree1'?' sub':'');});
+    var t=document.getElementById(treeId);if(t)t.className=t.className+' active';
+    ['bc1','bc2','bc3'].forEach(function(id){var e=document.getElementById(id);if(e)e.className='adm-bc';});
+    var b=document.getElementById(bcId);if(b)b.className='adm-bc active';
+    var succ=document.getElementById('admSuccess');if(succ)succ.className='adm-success';
+    var dot=document.getElementById('admDot');if(dot)dot.className='adm-dot';
+    var stxt=document.getElementById('admStatusTxt');if(stxt)stxt.textContent='In Draft';
+  }
+
+  function runPhase(idx){
+    clearTimeout(phTimer);
+    if(idx===1){activate('panel1','tree1','bc1');animPhase1();}
+    else if(idx===2){activate('panel2','tree2','bc2');animPhase2();}
+    else{activate('panel3','tree3','bc3');animPhase3();}
+    phTimer=setTimeout(function(){phase=phase<3?phase+1:1;runPhase(phase);},PHASE_DUR[idx-1]);
+  }
+
+  function type(elId,text,speed,cb){
+    var el=document.getElementById(elId);if(!el)return;
+    el.textContent='';var i=0;
+    var t=setInterval(function(){
+      el.textContent=text.substring(0,++i);
+      if(i>=text.length){clearInterval(t);if(cb)cb();}
+    },speed||40);
+  }
+
+  function animPhase1(){
+    ['obj-sales','obj-traffic','obj-awareness','obj-leads'].forEach(function(id){var e=document.getElementById(id);if(e)e.className='adm-obj';});
+    var nc=document.getElementById('cname-typed'),ncu=document.getElementById('cname-cur');
+    var bc=document.getElementById('budget-typed'),bcu=document.getElementById('budget-cur');
+    if(nc)nc.textContent='';if(bc)bc.textContent='';
+    if(ncu)ncu.style.display='inline-block';if(bcu)bcu.style.display='none';
+    type('cname-typed','Sadia Kids Shop — Sales Campaign',42,function(){
+      var s=document.getElementById('obj-sales');if(s)s.className='adm-obj selected';
+      setTimeout(function(){
+        if(ncu)ncu.style.display='none';if(bcu)bcu.style.display='inline-block';
+        type('budget-typed','500',200);
+      },500);
+    });
+  }
+
+  function animPhase2(){
+    var loc=document.getElementById('loc-tag'),fill=document.getElementById('age-fill');
+    var amin=document.getElementById('age-min'),amax=document.getElementById('age-max');
+    var ibox=document.getElementById('interests-box');
+    if(loc)loc.style.opacity='0';if(fill)fill.style.width='0%';
+    if(amin)amin.textContent='18';if(amax)amax.textContent='65+';
+    if(ibox)ibox.innerHTML='';
+    ['gen-all','gen-women','gen-men'].forEach(function(id){var e=document.getElementById(id);if(e)e.className='adm-gender-btn';});
+    setTimeout(function(){if(loc)loc.style.opacity='1';},400);
+    setTimeout(function(){
+      if(fill)fill.style.width='55%';
+      var s=0;var ai=setInterval(function(){
+        s++;
+        if(amin)amin.textContent=Math.min(18+Math.round(s*(22-18)/20),22);
+        if(amax)amax.textContent=s<20?(Math.max(65-Math.round(s*(65-40)/20),40)+'+'):40;
+        if(s>=20)clearInterval(ai);
+      },60);
+    },800);
+    setTimeout(function(){var w=document.getElementById('gen-women');if(w)w.className='adm-gender-btn active';},1500);
+    ['Baby Clothing','Kids Fashion','Mom Groups','Online Shopping'].forEach(function(tx,i){
+      setTimeout(function(){
+        if(!ibox)return;var tag=document.createElement('span');
+        tag.className='adm-int-tag';tag.textContent=tx;ibox.appendChild(tag);
+        setTimeout(function(){tag.className='adm-int-tag show';},30);
+      },1800+i*500);
+    });
+  }
+
+  function animPhase3(){
+    var mImg=document.getElementById('adMediaImg'),fbImg=document.getElementById('fbLiveImg');
+    var t1=document.getElementById('ad-typed1'),c1=document.getElementById('ad-cur1');
+    var t2=document.getElementById('ad-typed2'),c2=document.getElementById('ad-cur2');
+    var cc=document.getElementById('adCharCount'),ftxt=document.getElementById('fb-live-text');
+    var fhl=document.getElementById('fb-live-hl'),pbtn=document.getElementById('admPublishBtn');
+    var btxt=document.getElementById('admBtnTxt'),ph=document.getElementById('adMediaPh');
+    if(mImg)mImg.style.opacity='0';if(fbImg)fbImg.style.opacity='0';
+    if(t1)t1.textContent='';if(t2)t2.textContent='';
+    if(c1)c1.style.display='inline-block';if(c2)c2.style.display='none';
+    if(cc)cc.textContent='0 / 125';
+    if(ftxt)ftxt.textContent='🍓 আপনার ছোট্ট মেয়েটির জন্য...';
+    if(fhl)fhl.textContent='Order Today';
+    if(pbtn)pbtn.className='adm-publish-btn';if(btxt)btxt.textContent='Publish';
+    setTimeout(function(){
+      if(mImg)mImg.style.opacity='1';if(fbImg)fbImg.style.opacity='1';
+      if(ph)ph.style.opacity='0';
+    },600);
+    var primary='🍓 আপনার ছোট্ট মেয়েটির জন্য — স্ট্রবেরি প্রিন্ট ড্রেস! নরম কাপড়, সুন্দর ডিজাইন। সীমিত স্টক!';
+    setTimeout(function(){
+      var i=0;var ti=setInterval(function(){
+        if(t1)t1.textContent=primary.substring(0,++i);
+        if(cc)cc.textContent=i+' / 125';
+        if(ftxt&&i%5===0)ftxt.textContent=primary.substring(0,Math.min(i,35))+(i<35?'':'...');
+        if(i>=primary.length){
+          clearInterval(ti);if(c1)c1.style.display='none';if(c2)c2.style.display='inline-block';
+          var hl='Order Now — Limited Stock!';var j=0;
+          var th=setInterval(function(){
+            if(t2)t2.textContent=hl.substring(0,++j);
+            if(fhl)fhl.textContent=hl.substring(0,j);
+            if(j>=hl.length){
+              clearInterval(th);
+              setTimeout(function(){
+                if(pbtn)pbtn.className='adm-publish-btn glow';
+                setTimeout(function(){
+                  if(pbtn)pbtn.className='adm-publish-btn done';if(btxt)btxt.textContent='Publishing...';
+                  setTimeout(function(){
+                    if(btxt)btxt.textContent='Published ✓';
+                    var succ=document.getElementById('admSuccess');if(succ)succ.className='adm-success show';
+                    var dot=document.getElementById('admDot');if(dot)dot.className='adm-dot live';
+                    var stxt=document.getElementById('admStatusTxt');if(stxt)stxt.textContent='Active';
+                    if(ph)ph.style.opacity='';
+                  },900);
+                },800);
+              },600);
+            }
+          },50);
+        }
+      },30);
+    },1000);
+  }
+
+  runPhase(1);
+})();
+
+/* ── COMPARISON CARD ANIMATION (Interactive) ──── */
+(function(){
+  var isGZ=true,nIdx=0,pIdx=0,autoTimer=null,notifTimer=null;
+  var notifs=[
+    '🛒 New sale — Strawberry Dress × 1 — ৳850',
+    '🛒 New sale — Baby Dress (Red) × 2 — ৳1,700',
+    '💳 Order completed — ৳1,200 revenue',
+    '🎉 3 orders in the last 30 minutes!',
+    '🛒 New sale — Kids Dress × 1 — ৳950',
+    '💳 Order confirmed — ৳2,300 total'
+  ];
+  var procs=[
+    'Analyzing competitor targeting data...',
+    'Building custom audience from pixel data...',
+    'Optimizing bid strategy for ROAS...',
+    'Running A/B test on 3 creatives...',
+    'Retargeting warm audience segment...',
+    'Scaling winning ad set — budget ×2.4...',
+    'Refreshing lookalike audience — 1.2M reach...'
+  ];
+
+  function setMetric(id,val,good){
+    var el=document.getElementById(id);if(!el)return;
+    var p=el.closest('.diff-metric');if(p)p.className='diff-metric'+(good?' good':' bad');
+    el.style.opacity='0';
+    setTimeout(function(){el.textContent=val;el.style.opacity='1';},220);
+  }
+  function setAud(id,val,hl){
+    var el=document.getElementById(id);if(!el)return;
+    el.textContent=val;el.className='diff-aud-tag'+(hl?' highlight':'');
+  }
+  function setBar(id,w){var e=document.getElementById(id);if(e)e.style.width=w;}
+
+  function showGZ(fromClick){
+    isGZ=true;
+    var tg=document.getElementById('diffTabGood'),tb=document.getElementById('diffTabBad');
+    if(tg)tg.className='diff-tab diff-tab-good active';
+    if(tb)tb.className='diff-tab diff-tab-bad';
+    setMetric('diffRoasVal','4.2×',true);setMetric('diffCpcVal','৳18',true);
+    setMetric('diffSalesVal','47',true);setMetric('diffCpaVal','৳95',true);
+    setAud('daudLoc','Bangladesh — Dhaka, CTG',true);
+    setAud('daudAge','Women 22–38, Custom Audience',true);
+    setAud('daudType','Lookalike + Retargeting',true);
+    setTimeout(function(){setBar('diffBar1','12%');setBar('diffBar2','82%');},250);
+    if(fromClick){
+      // Animate bars from 0 on manual click
+      setBar('diffBar2','0%');
+      setTimeout(function(){setBar('diffBar2','82%');},50);
+    }
+    addNotif();
+    if(fromClick)restartAuto(8000);
+  }
+
+  function showNormal(fromClick){
+    isGZ=false;
+    var tg=document.getElementById('diffTabGood'),tb=document.getElementById('diffTabBad');
+    if(tg)tg.className='diff-tab diff-tab-good';
+    if(tb)tb.className='diff-tab diff-tab-bad active';
+    setMetric('diffRoasVal','0.4×',false);setMetric('diffCpcVal','৳120',false);
+    setMetric('diffSalesVal','2',false);setMetric('diffCpaVal','৳850',false);
+    setAud('daudLoc','Bangladesh — All',false);
+    setAud('daudAge','Age 18–65, All genders',false);
+    setAud('daudType','Interest-based only',false);
+    setTimeout(function(){
+      setBar('diffBar2','0%');
+      setTimeout(function(){setBar('diffBar1','12%');setBar('diffBar2','8%');},50);
+    },fromClick?0:200);
+    var a=document.getElementById('diffNotifArea');if(a)a.innerHTML='';
+    if(fromClick)restartAuto(8000);
+  }
+
+  function addNotif(){
+    var area=document.getElementById('diffNotifArea');if(!area||!isGZ)return;
+    while(area.children.length>=2){
+      var f=area.firstChild;
+      if(f){f.style.opacity='0';setTimeout((function(x){return function(){if(x&&x.parentNode)x.parentNode.removeChild(x);};})(f),300);}
+      area.removeChild(area.firstChild);
+    }
+    var n=document.createElement('div');n.className='diff-notif';
+    n.textContent=notifs[nIdx%notifs.length];nIdx++;
+    area.appendChild(n);
+    setTimeout(function(){n.className='diff-notif show';},30);
+  }
+
+  function rotProc(){
+    var el=document.getElementById('diffProcessTxt');if(!el)return;
+    el.style.opacity='0';
+    setTimeout(function(){el.textContent=procs[pIdx%procs.length];pIdx++;el.style.opacity='1';},300);
+  }
+
+  function startAuto(delay){
+    if(autoTimer)clearInterval(autoTimer);
+    autoTimer=setInterval(function(){
+      if(isGZ)showNormal(false);else showGZ(false);
+    },delay||5000);
+  }
+
+  function restartAuto(pause){
+    if(autoTimer)clearInterval(autoTimer);
+    autoTimer=setTimeout(function(){startAuto(5000);},pause||8000);
+  }
+
+  // Click handlers
+  var tabGood=document.getElementById('diffTabGood');
+  var tabBad=document.getElementById('diffTabBad');
+  if(tabGood)tabGood.addEventListener('click',function(){if(!isGZ)showGZ(true);});
+  if(tabBad)tabBad.addEventListener('click',function(){if(isGZ)showNormal(true);});
+
+  // Init
+  showGZ(false);
+  startAuto(5000);
+  setInterval(function(){if(isGZ)addNotif();},2500);
+  setInterval(rotProc,2200);
+})();
+
+/* ── REVEAL ON SCROLL ──────────────────────────── */
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!els.length)return;
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+  },{threshold:0.1});
+  els.forEach(function(el){obs.observe(el);});
+})();
+</script>
+
+
+<!-- ═══ FRAMEWORK ══════════════════════════════════════════ -->
+<section class="s" id="framework">
+  <div class="w fwrap">
+    <div style="margin-bottom:44px;text-align:center">
+      <span class="eye em">⚙️ আমাদের সিস্টেম</span>
+      <h2 class="sec">৯-ধাপের <span class="tz">প্রমাণিত ফ্রেমওয়ার্ক</span> —<br/>ট্র্যাকিং থেকে লাভজনক স্কেলিং পর্যন্ত।</h2>
+      <p class="sub" style="max-width:520px;margin:0 auto">প্রতিটি ধাপ আগেরটির উপর নির্মিত। একটি মিস করলে পুরো সিস্টেম ভেঙে পড়ে।</p>
+    </div>
+    <!-- Phase 1: Foundation -->
+    <div class="frow">
+      <div class="fphase">
+        <span class="fphbadge fphbadge-f">পর্যায় ১ — ভিত্তি</span>
+        <div class="fphline"></div>
+      </div>
+      <div class="fgrid">
+        <div class="fstep ph-f"><div class="fnum"><span class="fnbadge"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L3 5.5V10c0 4.2 3 7.6 7 8.5 4-.9 7-4.3 7-8.5V5.5L10 2z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 10l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><h4>সার্ভার-সাইড ট্র্যাকিং</h4><p>CAPI-র মাধ্যমে ১০০% নির্ভুল কনভার্শন ডেটা। iOS আপডেট ও অ্যাড ব্লকার আর আপনার ফলাফল লুকাতে পারবে না।</p></div>
+        <div class="fstep ph-f"><div class="fnum"><span class="fnbadge"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="12" width="4" height="6" rx="1" fill="white" opacity=".75"/><rect x="8" y="7" width="4" height="11" rx="1" fill="white"/><rect x="14" y="3" width="4" height="15" rx="1" fill="white" opacity=".75"/></svg></span></div><h4>ব্যবসা বিশ্লেষণ</h4><p>আপনার পণ্য, প্রতিযোগী ও অডিয়েন্সের আচরণের গভীর বিশ্লেষণ করে বিজয়ী স্ট্র্যাটেজির ভিত্তি তৈরি।</p></div>
+        <div class="fstep ph-f"><div class="fnum"><span class="fnbadge"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="5.5" stroke="white" stroke-width="1.6"/><path d="M12.5 12.5L17 17" stroke="white" stroke-width="1.7" stroke-linecap="round"/><path d="M6.5 8.5l1.5 1.5 2.5-2.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><h4>সম্পূর্ণ মার্কেটিং অডিট</h4><p>প্রতিটি বিজ্ঞাপন, ল্যান্ডিং পেজ ও ট্র্যাকিং সেটআপ পর্যালোচনা। আপনার বাজেট ঠিক কোথায় ফুটো হচ্ছে তা চিহ্নিত করি।</p></div>
+      </div>
+    </div>
+
+    <!-- Phase 2: Strategy & Build -->
+    <div class="frow">
+      <div class="fphase">
+        <span class="fphbadge fphbadge-m">পর্যায় ২ — স্ট্র্যাটেজি ও নির্মাণ</span>
+        <div class="fphline"></div>
+      </div>
+      <div class="fgrid">
+        <div class="fstep ph-m"><div class="fnum"><span class="fnbadge"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="4" stroke="white" stroke-width="1.6"/><path d="M5 10c-1.5 1-2.5 2.5-2.5 4.5h15c0-2-1-3.5-2.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M13 5.5l2-2M7 5.5L5 3.5" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg></span></div><h4>পারফরমেন্স কাস্টম স্ট্র্যাটেজি</h4><p>আপনার ব্যবসার জন্য ১০০% কাস্টম পরিকল্পনা। প্ল্যাটফর্ম বাছাই, অডিয়েন্স ম্যাপিং এবং বাজেট বরাদ্দ সম্পূর্ণ ডেটার উপর ভিত্তি করে।</p></div>
+        <div class="fstep ph-m"><div class="fnum"><span class="fnbadge"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 3h14l-4.5 6H7.5L3 3z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M7.5 9v6a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><h4>হাই-কনভার্টিং ফানেল</h4><p>সচেতনতা থেকে কেনাকাটা পর্যন্ত পূর্ণ কাস্টমার জার্নি। ল্যান্ডিং পেজ, অফার ও রিটার্গেটিং সিকোয়েন্স কনভার্শনের জন্য তৈরি।</p></div>
+        <div class="fstep ph-m"><div class="fnum"><span class="fnbadge"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7l-3 3 3 3M15 7l3 3-3 3M11.5 3.5l-3 13" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><h4>GTM + Pixel + CAPI</h4><p>Google Tag Manager, Meta Pixel, Conversions API, GA4 — সম্পূর্ণ কনফিগার ও পরীক্ষিত। প্রতিটি অ্যাকশনে রিয়েল-টাইম দৃশ্যমানতা।</p></div>
+      </div>
+    </div>
+
+    <!-- Phase 3: Growth -->
+    <div class="frow">
+      <div class="fphase">
+        <span class="fphbadge fphbadge-e">পর্যায় ৩ — প্রবৃদ্ধি</span>
+        <div class="fphline"></div>
+      </div>
+      <div class="fgrid">
+        <div class="fstep ph-e"><div class="fnum"><span class="fnbadge"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2c4 0 7 3.5 7 8 0 2.5-1 4.5-2.5 6L10 18l-4.5-2C4 14.5 3 12.5 3 10c0-4.5 3-8 7-8z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 6v4l2.5 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><h4>ডেটা-ভিত্তিক লঞ্চ</h4><p>ক্রিয়েটিভ, অডিয়েন্স ও বিডিং সিদ্ধান্ত সম্পূর্ণ ডেটার উপর নির্ভর। কিছুই এলোমেলো নয়, কোনো অনুমান নেই।</p></div>
+        <div class="fstep ph-e"><div class="fnum"><span class="fnbadge"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 5h5v6H4z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M11 9h5v6h-5z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M6.5 5V3M13.5 9V7" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M4 17h12" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></span></div><h4>A/B টেস্টিং</h4><p>হেডলাইন, ক্রিয়েটিভ ও অডিয়েন্স ক্রমাগত পরীক্ষা। আসল পারফরমেন্স ডেটার উপর ভিত্তি করে প্রতি সপ্তাহে উন্নতি।</p></div>
+        <div class="fstep ph-e"><div class="fnum"><span class="fnbadge"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 14l4.5-5 3.5 3 4-5L18 4" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 4h4v4" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><h4>লাভজনক স্কেলিং</h4><p>যখন সংখ্যা প্রমাণ করে কাজ হচ্ছে, তখনই স্কেল করি। লাভজনকতা নিশ্চিত হলেই বাজেট বাড়ানো হয়। অন্ধ স্কেলিং নয়।</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ PROCESS ════════════════════════════════════════════ -->
+<section class="s s2" id="process">
+  <div class="w procwrap">
+    <div style="text-align:center;margin-bottom:0">
+      <span class="eye em">🗺️ কিভাবে শুরু হয়</span>
+      <h2 class="sec">অডিট থেকে স্কেল — <span class="tz">৪ ধাপে আপনার সিস্টেম তৈরি।</span></h2>
+    </div>
+    <div class="procgrid">
+      <div class="pstep"><div class="pnum"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 18v-6a9 9 0 0 1 18 0v6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>ফ্রি অডিট কল</h4><p>১৫ মিনিটের কল। আমরা আপনার ব্যবসা ও বর্তমান মার্কেটিং সেটআপ জানি। কোনো খরচ নেই, কোনো বাধ্যবাধকতা নেই।</p></div>
+      <div class="parrow" aria-hidden="true">→</div>
+      <div class="pstep"><div class="pnum"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke="white" stroke-width="1.8" stroke-linecap="round"/><rect x="9" y="3" width="6" height="4" rx="1" stroke="white" stroke-width="1.8"/><polyline points="9 12 11 14 15 10" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>অডিট রিপোর্ট + স্ট্র্যাটেজি</h4><p>কী ভাঙছে, কী কাজ করছে এবং অগ্রাধিকার সহ কাস্টম অ্যাকশন প্ল্যানের স্পষ্ট বিবরণ।</p></div>
+      <div class="parrow" aria-hidden="true">→</div>
+      <div class="pstep"><div class="pnum"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>সিস্টেম বিল্ড ও লঞ্চ</h4><p>ট্র্যাকিং, ফানেল, ক্রিয়েটিভ ও ক্যাম্পেইন — সব কিছু আমরা সামলাই। ৭ দিনের মধ্যে সম্পূর্ণ সিস্টেম লাইভ।</p></div>
+      <div class="parrow" aria-hidden="true">→</div>
+      <div class="pstep"><div class="pnum"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><line x1="18" y1="20" x2="18" y2="10" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="20" x2="12" y2="4" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="20" x2="6" y2="14" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="2" y1="20" x2="22" y2="20" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div><h4>অপ্টিমাইজ ও স্কেল</h4><p>সাপ্তাহিক রিপোর্ট, ডেটা-চালিত অপ্টিমাইজেশন ও লাভজনক ক্যাম্পেইন স্কেলিং — ধারাবাহিক, চক্রবৃদ্ধি প্রবৃদ্ধি।</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ WHY GROWLYZ ════════════════════════════════════════ -->
+<section class="s" id="why">
+  <div class="w">
+    <div style="text-align:center;margin-bottom:44px">
+      <span class="eye ee">💡 কেন GrowlyZ</span>
+      <h2 class="sec">কথা নয়, <span class="tf">ফলাফল দিয়ে বিচার করুন।</span></h2>
+    </div>
+
+    <div class="numgrid">
+      <div class="ncard">
+        <div class="ncard-ico ni-f">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 14l5-5 3 3 5-6 3 3" stroke="#FF4800" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 5h5v5" stroke="#FF4800" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="nbig" data-count="3" data-suffix="×">৩×</div><div class="nlbl">গড় ROAS উন্নতি</div>
+      </div>
+      <div class="ncard">
+        <div class="ncard-ico ni-e">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L4 5v5c0 4 3.5 7 6 8 2.5-1 6-4 6-8V5l-6-3z" stroke="#FF9800" stroke-width="1.6" stroke-linejoin="round"/><path d="M7.5 10l1.8 2 3.2-3.5" stroke="#FF9800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="nbig" data-count="0" data-suffix="%">০%</div><div class="nlbl">CAPI-তে ডেটা লস</div>
+      </div>
+      <div class="ncard">
+        <div class="ncard-ico ni-f">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M11 2L4 11h7l-2 7 9-10h-7l2-6z" stroke="#FF4800" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="nbig" data-count="7" data-suffix="দিন">৭দিন</div><div class="nlbl">সম্পূর্ণ সিস্টেম লাইভ</div>
+      </div>
+      <div class="ncard">
+        <div class="ncard-ico ni-e">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M1 10s3.5-7 9-7 9 7 9 7-3.5 7-9 7-9-7-9-7z" stroke="#FF9800" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="10" r="2.8" stroke="#FF9800" stroke-width="1.6"/></svg>
+        </div>
+        <div class="nbig" data-count="100" data-suffix="%">১০০%</div><div class="nlbl">স্বচ্ছ রিপোর্টিং</div>
+      </div>
+    </div>
+
+    <div class="whygrid">
+      <div class="wcard">
+        <div class="ico ico-e">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2"  y="13" width="4" height="7" rx="1.2" stroke="#FF9800" stroke-width="1.5"/><rect x="9"  y="8"  width="4" height="12" rx="1.2" stroke="#FF9800" stroke-width="1.5"/><rect x="16" y="3"  width="4" height="17" rx="1.2" stroke="#FF9800" stroke-width="1.5"/></svg>
+        </div>
+        <h4>ডেটা-চালিত সিদ্ধান্ত</h4>
+        <p>আমরা অনুমান করি না — ডেটা দিয়ে প্রমাণ করি। প্রতিটি পদক্ষেপ ডেটা-বিশ্লেষিত তথ্যের উপর, আবেগ বা অনুভূতির উপর নয়।</p>
+        <ul><li>রিয়েল-টাইম পারফরমেন্স ড্যাশবোর্ড</li><li>সাপ্তাহিক ডেটা-বিশ্লেষিত রিপোর্ট</li><li>প্রতিটি সিদ্ধান্ত ডেটা দ্বারা সমর্থিত</li></ul>
+      </div>
+
+      <div class="wcard">
+        <div class="ico ico-f">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2C7.7 2 5 4.7 5 8c0 5 6 12 6 12s6-7 6-12c0-3.3-2.7-6-6-6z" stroke="#FF4800" stroke-width="1.6" stroke-linejoin="round"/><circle cx="11" cy="8" r="2.5" stroke="#FF4800" stroke-width="1.5"/></svg>
+        </div>
+        <h4>বাংলাদেশ মার্কেট বিশেষজ্ঞ</h4>
+        <p>বাংলাদেশি ক্রেতারা কিভাবে ভাবেন, সিদ্ধান্ত নেন ও কনভার্ট হন তা আমরা সঠিকভাবে বুঝি। কোনো বিদেশি কপি-পেস্ট টেমপ্লেট নেই।</p>
+        <ul><li>স্থানীয় ভোক্তা আচরণের অন্তর্দৃষ্টি</li><li>বাংলাদেশ মার্কেট-নির্দিষ্ট স্ট্র্যাটেজি</li><li>স্থানীয়ভাবে কনভার্টিং কপি ও ক্রিয়েটিভ</li></ul>
+      </div>
+
+      <div class="wcard">
+        <div class="ico ico-f">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M2 16l6-6 3.5 3.5 6-7.5" stroke="#FF4800" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 5h5v5" stroke="#FF4800" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>লাইক নয়, মুনাফা চাই</h4>
+        <p>ফলোয়ার বাড়ানো আমাদের কাজ নয়। আপনার প্রতিটি বিজ্ঞাপন টাকার বিনিময়ে কতটুকু মুনাফা আনছে — সেটাই আমরা মাপি।</p>
+        <ul><li>ROAS-কেন্দ্রিক ক্যাম্পেইন পরিকল্পনা</li><li>বাজেট দক্ষতা ট্র্যাকিং</li><li>প্রতি ক্যাম্পেইনে মুনাফা বিশ্লেষণ</li></ul>
+      </div>
+
+      <div class="wcard">
+        <div class="ico ico-e">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M1.5 11s4-8 9.5-8 9.5 8 9.5 8-4 8-9.5 8-9.5-8-9.5-8z" stroke="#FF9800" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="3" stroke="#FF9800" stroke-width="1.6"/></svg>
+        </div>
+        <h4>সম্পূর্ণ স্বচ্ছতা</h4>
+        <p>আপনার অ্যাড অ্যাকাউন্ট আপনার। প্রতিটি টাকা খরচ, প্রতিটি ফলাফল — সবসময় দেখুন। কোনো লুকোচুরি নেই।</p>
+        <ul><li>সম্পূর্ণ অ্যাড অ্যাকাউন্ট মালিকানা</li><li>লাইভ পারফরমেন্স ড্যাশবোর্ড</li><li>কোনো লুকানো ফি বা মার্কআপ নেই</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CTA ════════════════════════════════════════════════ -->
+<section id="cta">
+  <div class="ctai">
+    <span class="eye em">🎯 এখনই পদক্ষেপ নিন</span>
+    <h2>আপনি পড়ছেন, প্রতিযোগী<br/><span class="tz">এগিয়ে যাচ্ছে।</span></h2>
+    <p>প্রতিদিন সিস্টেম ছাড়া বিজ্ঞাপন চালানো মানে প্রতিদিন টাকা নষ্ট। ফ্রি অডিট কলে আমরা দেখাব কোথায় সমস্যা ও কিভাবে ঠিক করতে হবে — কোনো বিক্রির চেষ্টা নেই, শুধু সততা।</p>
+    <div class="ctacards">
+      <div class="ctacard">
+        <div class="ico ico-f" style="width:40px;height:40px;border-radius:10px;">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="#FF4800" stroke-width="1.5"/><path d="M11.5 11.5L16 16" stroke="#FF4800" stroke-width="1.5" stroke-linecap="round"/><path d="M5.5 7.5l1.8 1.8 2.7-2.7" stroke="#FF4800" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>ফ্রি মার্কেটিং অডিট</h4>
+        <p>আমরা আপনার সম্পূর্ণ সেটআপ বিশ্লেষণ করি ও দেখিয়ে দিই কোথায় টাকা যাচ্ছে — সম্পূর্ণ বিনামূল্যে।</p>
+      </div>
+      <div class="ctacard">
+        <div class="ico ico-e" style="width:40px;height:40px;border-radius:10px;">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 2.5h3l1.2 3.2-1.8 1.7c1 2 2.8 3.8 4.7 4.7l1.7-1.8 3.2 1.2V14c0 1.5-1.3 2.6-2.8 2.3C7 15.3 2.7 11 2.2 5.3 1.9 3.8 3 2.5 3 2.5z" stroke="#FF9800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>স্ট্র্যাটেজি কল</h4>
+        <p>৩০ মিনিট। আপনার ব্যবসার জন্য বিশেষভাবে তৈরি স্পষ্ট, অগ্রাধিকারযুক্ত অ্যাকশন প্ল্যান।</p>
+      </div>
+      <div class="ctacard">
+        <div class="ico" style="width:40px;height:40px;border-radius:10px;background:rgba(37,211,102,.09);border:1px solid rgba(37,211,102,.22);">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="rgba(37,211,102,.9)"><path d="M9 1C4.58 1 1 4.58 1 9c0 1.42.37 2.74 1.02 3.89L1 17l4.13-1.01A7.96 7.96 0 0 0 9 17c4.42 0 8-3.58 8-8S13.42 1 9 1zm3.93 10.69c-.17.46-.98.88-1.34.94-.33.05-.76.07-1.23-.08-.29-.1-.67-.22-1.06-.43C8.01 11.3 6.68 9.85 6.19 9.15c-.3-.44-.48-.93-.48-1.43V7.7c0-.46.18-.87.47-1.18.13-.15.28-.22.4-.22h.29c.13 0 .27.05.37.33l.48 1.21c.11.27.05.55-.11.75l-.24.29c-.08.1-.09.22-.03.32.27.52.73 1.12 1.28 1.59.55.47 1.17.8 1.7.97.13.04.26.02.35-.07l.3-.34c.2-.22.48-.3.76-.17l1.15.55c.29.14.29.49.29.65v.23c0 .14-.07.27-.15.41z"/></svg>
+        </div>
+        <h4>WhatsApp পরামর্শ</h4>
+        <p>সরাসরি মেসেজ করুন। বিজ্ঞাপন বা ফানেল নিয়ে যেকোনো প্রশ্ন করুন। দ্রুত উত্তর পাবেন — বিনামূল্যে।</p>
+      </div>
+    </div>
+    <div class="crow" style="justify-content:center">
+      <a href="#" class="btn bfire bmd">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="5.8" cy="5.8" r="4.3" stroke="#fff" stroke-width="1.4"/><path d="M9 9l3.2 3.2" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M4 5.8l1.3 1.3 2.2-2.2" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        ফ্রি অডিট বুক করুন
+      </a>
+      <a href="#" class="btn be bmd">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 2h2.2l.9 2.6-1.4 1.3c.7 1.5 2.2 3 3.8 3.8l1.3-1.4 2.6.9V12c0 1.2-1 2-2.2 1.8C5 13.1 1.9 10 1.2 5.2 1 3.8 1.8 2 2.5 2z" stroke="#0A0B1E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        স্ট্র্যাটেজি কল বুক করুন
+      </a>
+      <a href="https://wa.me/880154314108" class="btn bw bmd">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="#fff"><path d="M7 1C3.69 1 1 3.69 1 7c0 1.1.29 2.12.8 3.02L1 13l3-.77A5.97 5.97 0 0 0 7 13c3.31 0 6-2.69 6-6S10.31 1 7 1zm2.74 8.31c-.12.34-.75.66-1.03.7-.26.04-.58.06-.95-.06-.22-.07-.51-.17-.8-.33C5.77 9.12 4.83 8.09 4.5 7.64c-.23-.32-.36-.69-.36-1.07v-.01c0-.35.13-.66.36-.89.1-.11.21-.16.3-.16h.22c.1 0 .2.04.28.25l.36.91c.08.2.04.41-.08.56l-.18.21c-.06.07-.07.16-.02.24.2.39.55.84.96 1.19.41.35.88.6 1.27.72.09.03.19.01.26-.05l.23-.25c.15-.17.36-.22.58-.13l.87.41c.22.1.22.37.22.49v.17c0 .1-.05.21-.11.3z"/></svg>
+        WhatsApp করুন
+      </a>
+    </div>
+    <div class="ctanote">
+      <span>✓ সম্পূর্ণ বিনামূল্যে</span><span class="sp">|</span>
+      <span>✓ কোনো বিক্রির চেষ্টা নেই</span><span class="sp">|</span>
+      <span>✓ ২৪ ঘণ্টার মধ্যে সাড়া</span><span class="sp">|</span>
+      <span>⚡ সীমিত স্লট — এই সপ্তাহে</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FAQ ════════════════════════════════════════════════ -->
+<section class="s" id="faq">
+  <div class="w">
+    <div style="text-align:center;margin-bottom:48px">
+      <span class="eye ee">❓ সাধারণ প্রশ্ন</span>
+      <h2 class="sec">প্রশ্ন আছে? <span class="te">উত্তর এখানেই।</span></h2>
+    </div>
+    <div class="faqwrap">
+
+      <div class="faqitem">
+        <button class="faqbtn" onclick="ft(this)">কেন আমার বিজ্ঞাপন থেকে বিক্রি হচ্ছে না?<span class="faqa">+</span></button>
+        <div class="faqbody">বিজ্ঞাপন শুধু মানুষকে আপনার অফারের সামনে নিয়ে আসে — কিন্তু কেনানোর কাজটা সিস্টেম করে। ধারাবাহিক বিক্রির জন্য দরকার: সঠিক টার্গেটিং + হাই-কনভার্টিং ফানেল + সঠিক ক্রিয়েটিভ + নির্ভুল ট্র্যাকিং + রিটার্গেটিং। এর যেকোনো একটি অনুপস্থিত থাকলে বাজেট বাড়িয়েও ফলাফল পাবেন না। আমরা প্রথমে ডায়াগনোসিস করি — তারপর সিস্টেম তৈরি করি।</div>
+      </div>
+
+      <div class="faqitem">
+        <button class="faqbtn" onclick="ft(this)">আমার Pixel আছে — কেন সার্ভার-সাইড ট্র্যাকিং দরকার?<span class="faqa">+</span></button>
+        <div class="faqbody">iOS 14+ থেকে ব্রাউজার-ভিত্তিক পিক্সেল ৩০–৫০% নির্ভুলতা হারিয়েছে। অ্যাড ব্লকার ও প্রাইভেট ব্রাউজিং আরো খারাপ করে তোলে। মানে আপনি ভুল ডেটা দেখছেন ও বাজেটে ভুল সিদ্ধান্ত নিচ্ছেন। Conversions API (CAPI) সার্ভার-টু-সার্ভার ডেটা পাঠায়, প্রায় ১০০% নির্ভুলতা ফিরিয়ে দেয়।</div>
+      </div>
+
+      <div class="faqitem">
+        <button class="faqbtn" onclick="ft(this)">ফানেল কী এবং আমার কি সত্যিই একটি দরকার?<span class="faqa">+</span></button>
+        <div class="faqbody">ফানেল হলো সেই পথ যা একজন অপরিচিত মানুষ ক্রেতা হতে নেয় — এবং পুনরায় ক্রেতা হতে নেয়। বিজ্ঞাপন দেখল → পেজ ভিজিট করল → বিশ্বাস তৈরি হলো → অফার বিবেচনা করল → কিনল → আবার কিনল। প্রতিটি ধাপে সঠিক মেসেজ না থাকলে মানুষ চলে যায়। অনলাইনে কিছু বিক্রি করলে ফানেল দরকার, নাহলে প্রতিদিন টাকা হারাচ্ছেন।</div>
+      </div>
+
+      <div class="faqitem">
+        <button class="faqbtn" onclick="ft(this)">কত দ্রুত ফলাফল দেখব?<span class="faqa">+</span></button>
+        <div class="faqbody">সৎ উত্তর: প্রথম ফলাফল ১–২ সপ্তাহে, সম্পূর্ণ অপ্টিমাইজেশন ৬০–৯০ দিনে।<br/><br/>মাস ১: সিস্টেম বিল্ড + ডেটা সংগ্রহ<br/>মাস ২: ক্যাম্পেইন অপ্টিমাইজেশন<br/>মাস ৩: লাভজনক স্কেলিং<br/><br/>যে কেউ "১ সপ্তাহে ১০× ফলাফল" প্রতিশ্রুতি দিচ্ছে সে মিথ্যা বলছে। আমরা সিস্টেম তৈরি করি যা বৃদ্ধি পায়, কৌশল নয় যা মিলিয়ে যায়।</div>
+      </div>
+
+      <div class="faqitem">
+        <button class="faqbtn" onclick="ft(this)">আমাকে কি নিজে কিছু পরিচালনা করতে হবে?<span class="faqa">+</span></button>
+        <div class="faqbody">না। ট্র্যাকিং সেটআপ, ফানেল বিল্ড, ক্যাম্পেইন ম্যানেজমেন্ট ও অপ্টিমাইজেশন — সব কিছু আমরা সামলাই। আপনি ব্যবসা পরিচালনায় মনোযোগ দিন।<br/><br/>তবে, আপনার নিজের অ্যাড অ্যাকাউন্টে সর্বদা সরাসরি অ্যাক্সেস থাকবে। সাপ্তাহিক রিপোর্ট পাবেন। সব কিছু স্বচ্ছ — কোনো লুকোচুরি নেই, কোনো গোপন কার্যক্রম নেই।</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═════════════════════════════════════════════ -->
+<footer>
+  <div class="w">
+    <div class="ftgrid">
+      <div>
+        <div class="ftbrand">
+          <!-- Footer Z logo -->
+          <svg width="26" height="26" viewBox="0 0 36 36" fill="none">
+            <defs>
+              <linearGradient id="flt" x1="3" y1="6" x2="33" y2="6" gradientUnits="userSpaceOnUse">
+                <stop offset="0%"   stop-color="#CC1500"/>
+                <stop offset="38%"  stop-color="#E83800"/>
+                <stop offset="68%"  stop-color="#FF7200"/>
+                <stop offset="100%" stop-color="#FFB800"/>
+              </linearGradient>
+              <linearGradient id="fldg" x1="7" y1="11" x2="29" y2="26" gradientUnits="userSpaceOnUse">
+                <stop offset="0%"   stop-color="#FF4200"/>
+                <stop offset="36%"  stop-color="#BB2000"/>
+                <stop offset="52%"  stop-color="#242430"/>
+                <stop offset="100%" stop-color="#0F0F18"/>
+              </linearGradient>
+              <linearGradient id="fldb" x1="3" y1="30" x2="33" y2="30" gradientUnits="userSpaceOnUse">
+                <stop offset="0%"   stop-color="#282838"/>
+                <stop offset="100%" stop-color="#383848"/>
+              </linearGradient>
+            </defs>
+            <rect x="3" y="3" width="30" height="8" rx="2" fill="url(#flt)"/>
+            <polygon points="29,11 7,25 18,25 32,11" fill="url(#fldg)"/>
+            <rect x="3" y="25" width="30" height="8" rx="2" fill="url(#fldb)"/>
+            <ellipse cx="22" cy="18.5" rx="2.2" ry="1.1" fill="white" opacity=".55" transform="rotate(-38 22 18.5)"/>
+          </svg>
+          <span class="ftword">GrowlyZ</span>
+        </div>
+        <p class="ftdesc">বাংলাদেশের পারফরমেন্স মার্কেটিং এজেন্সি। ট্র্যাকিং, ফানেল, ক্রিয়েটিভ স্ট্র্যাটেজি ও রিটার্গেটিং — পুরো সিস্টেম এক জায়গায়। বিজ্ঞাপনকে বিনিয়োগে পরিণত করি।</p>
+        <div class="ftcon">
+          <a href="https://wa.me/8801754314108">📱 +880 1754314108</a>
+          <a href="mailto:growlyzinfo@gmail.com">📧 growlyzinfo@gmail.com</a>
+          <a href="#">📍 ঢাকা, বাংলাদেশ</a>
+          <a href="https://www.facebook.com/Growlyz/" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> facebook.com/Growlyz</a>
+        </div>
+      </div>
+      <div>
+        <h5>সেবাসমূহ</h5>
+        <ul>
+          <li><a href="#">সার্ভার-সাইড ট্র্যাকিং</a></li>
+          <li><a href="#">Meta Ads ম্যানেজমেন্ট</a></li>
+          <li><a href="#">Google Ads</a></li>
+          <li><a href="#">ফানেল বিল্ডিং</a></li>
+          <li><a href="#">GTM সেটআপ</a></li>
+          <li><a href="#">ফ্রি মার্কেটিং অডিট</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>দ্রুত লিংক</h5>
+        <ul>
+          <li><a href="#problem">সমস্যা বনাম সমাধান</a></li>
+          <li><a href="#framework">আমাদের সিস্টেম</a></li>
+          <li><a href="#process">কিভাবে কাজ করে</a></li>
+          <li><a href="#why">কেন GrowlyZ</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#cta">ফ্রি অডিট নিন</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftbot">
+      <p>© ২০২৫ <span class="ftmark">GrowlyZ</span>। সকল অধিকার সংরক্ষিত।</p>
+      <p>পারফরমেন্স · ROI-কেন্দ্রিক · বাংলাদেশ বিশেষজ্ঞ</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/8801754314108" class="wafab" title="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 26 26" fill="white"><path d="M13 1C6.37 1 1 6.37 1 13c0 2.05.54 3.97 1.48 5.63L1 25l6.54-1.46A11.94 11.94 0 0 0 13 25c6.63 0 12-5.37 12-12S19.63 1 13 1zm6.72 16.28c-.29.8-1.68 1.52-2.31 1.62-.57.09-1.29.13-2.08-.13-.48-.16-1.09-.37-1.87-.73C10.35 17.05 8.2 14.7 7.42 13.6c-.52-.71-.8-1.51-.8-2.3v-.03c0-.76.3-1.43.79-1.93.21-.23.45-.34.64-.34h.47c.21 0 .43.08.59.52l.76 1.91c.18.43.09.9-.17 1.22l-.38.46c-.13.15-.15.36-.05.53.44.86 1.19 1.85 2.09 2.6.9.75 1.91 1.26 2.73 1.52.2.07.42.03.57-.12l.49-.55c.34-.4.81-.5 1.27-.3l1.87.88c.47.22.47.8.47 1.06v.37c0 .21-.12.44-.24.67z"/></svg>
+</a>
+
+<!-- ═══ BOOKING BOTTOM SHEET ════════════════════════════════ -->
+<div id="bsov"></div>
+<div id="bsheet" role="dialog" aria-modal="true" aria-label="ফ্রি অডিট বুকিং">
+  <div class="bsh"></div>
+
+  <!-- Loading -->
+  <div class="bsloading" id="bsloading">
+    <div class="bsspinner"></div>
+    <p style="font-size:14px;color:var(--t2)">সাবমিট করা হচ্ছে...</p>
+  </div>
+
+  <!-- Success -->
+  <div class="bssucc" id="bssucc">
+    <div class="bssico">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><path d="M6 17l8 8 14-14" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h3 class="bssh">রিকোয়েস্ট পাঠানো হয়েছে! 🎉</h3>
+    <p class="bssp">ধন্যবাদ! আমাদের টিম ২৪ ঘণ্টার মধ্যে আপনার WhatsApp-এ যোগাযোগ করবে।</p>
+    <a href="https://wa.me/8801754314108" class="btn bfire bmd bswabtn">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="#fff"><path d="M8 1C4.13 1 1 4.13 1 8c0 1.26.33 2.44.91 3.46L1 15l3.56-.9A6.97 6.97 0 0 0 8 15c3.87 0 7-3.13 7-7S11.87 1 8 1zm3.15 9.6c-.16.43-.94.83-1.28.88-.31.05-.71.07-1.14-.07-.27-.09-.62-.2-.97-.4C6.44 10.4 5.21 9.06 4.78 8.44c-.27-.38-.42-.81-.42-1.23v-.03c0-.4.15-.76.41-1.02.12-.13.25-.19.36-.19h.26c.12 0 .24.05.33.29l.45 1.12c.1.24.05.5-.1.68l-.22.26c-.07.08-.08.19-.03.29.25.48.68 1.03 1.17 1.46.5.43 1.06.72 1.55.88.12.04.24.02.32-.06l.27-.31c.19-.21.44-.27.69-.16l1.05.5c.26.12.26.44.26.59v.21c0 .12-.06.24-.13.37z"/></svg>
+      এখনই WhatsApp-এ কথা বলুন
+    </a>
+    <p style="font-size:12.5px;color:var(--t3);margin-top:10px">অথবা আমরা নিজে থেকে যোগাযোগ করব।</p>
+  </div>
+
+  <!-- Form -->
+  <div id="bsform">
+    <div class="bshd">
+      <div class="bsht">📅 ফ্রি অডিট বুক করুন</div>
+      <button class="bshx" id="bshx" aria-label="বন্ধ করুন">✕</button>
+    </div>
+    <div class="bsbd">
+      <!-- Name + Phone -->
+      <div class="bsf2">
+        <div class="bsf" style="margin-bottom:0">
+          <label class="bsl" for="bsname">নাম *</label>
+          <input class="bsi" type="text" id="bsname" placeholder="আপনার পূর্ণ নাম" autocomplete="name"/>
+          <div class="bse" id="bsne"></div>
+        </div>
+        <div class="bsf" style="margin-bottom:0">
+          <label class="bsl" for="bsphone">WhatsApp নম্বর *</label>
+          <input class="bsi" type="tel" id="bsphone" placeholder="01XXXXXXXXX" autocomplete="tel"/>
+          <div class="bse" id="bspe"></div>
+        </div>
+      </div>
+      <!-- Date -->
+      <div class="bsf">
+        <label class="bsl" for="bsdate">পছন্দের তারিখ *</label>
+        <input class="bsi" type="date" id="bsdate"/>
+        <div class="bse" id="bsde"></div>
+      </div>
+      <!-- Time popup — hidden until date is selected -->
+      <div id="timeSection" style="display:none;margin-top:2px">
+        <div style="border:1.5px solid rgba(232,56,0,0.28);border-radius:10px;padding:11px 12px 9px;background:rgba(255,248,245,0.7)">
+          <div style="font-size:10.5px;font-weight:700;color:#E83800;letter-spacing:.6px;text-transform:uppercase;margin-bottom:9px">⏰ সময় বেছে নিন *</div>
+          <div id="hourSlotsGrid" style="display:grid;grid-template-columns:repeat(6,1fr);gap:5px"></div>
+          <div id="bsavail" style="min-height:14px;margin-top:5px;font-size:12px"></div>
+        </div>
+        <div class="bsse" id="bsste" style="margin-top:4px"></div>
+      </div>
+      <button class="bssub" id="bssub">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5.2" stroke="#fff" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><path d="M5 7l1.7 1.7 3-3" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        অডিট বুক করুন
+      </button>
+      <p class="bsnote">✓ সম্পূর্ণ বিনামূল্যে &nbsp;·&nbsp; ✓ কোনো বিক্রির চাপ নেই &nbsp;·&nbsp; ✓ ২৪ ঘণ্টায় সাড়া</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // FAQ accordion
+  function ft(btn){const item=btn.closest('.faqitem'),open=item.classList.contains('open');document.querySelectorAll('.faqitem.open').forEach(el=>el.classList.remove('open'));if(!open)item.classList.add('open')}
+
+  // Hamburger menu
+  const nhbg=document.getElementById('nhbg'),nmob=document.getElementById('nmob');
+  if(nhbg&&nmob){
+    nhbg.addEventListener('click',()=>{const o=nmob.classList.toggle('open');nhbg.classList.toggle('open',o)});
+    nmob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nmob.classList.remove('open');nhbg.classList.remove('open')}));
+    document.addEventListener('click',e=>{if(!nhbg.contains(e.target)&&!nmob.contains(e.target)){nmob.classList.remove('open');nhbg.classList.remove('open')}});
+  }
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const id=a.getAttribute('href');if(id==='#')return;const t=document.querySelector(id);if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}})});
+
+  // Scroll progress + nav
+  const spbar=document.getElementById('spbar'),nv=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{
+    spbar.style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+'%';
+    nv.classList.toggle('nav-scrolled',scrollY>50);
+  },{passive:true});
+
+  // Bangla digits converter
+  const bd=['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  function toBD(n){return String(Math.round(n)).split('').map(d=>bd[+d]).join('')}
+
+  // Count-up animation for .nbig elements
+  function countUp(el){
+    const to=+el.dataset.count,suf=el.dataset.suffix||'';
+    if(!to){el.textContent=toBD(0)+suf;return}
+    const dur=1500,t0=performance.now();
+    (function tick(now){
+      const p=Math.min((now-t0)/dur,1),ease=1-Math.pow(1-p,3);
+      el.textContent=toBD(ease*to)+suf;
+      if(p<1)requestAnimationFrame(tick);
+    })(t0);
+  }
+
+  // Scroll-reveal observer (blur + translate + scale)
+  const ob=new IntersectionObserver(entries=>entries.forEach(e=>{
+    if(e.isIntersecting){
+      const t=e.target;
+      t.style.opacity='1';t.style.transform='translateY(0) translateX(0) scale(1)';t.style.filter='blur(0px)';
+      if(t.dataset.count!==undefined)countUp(t);
+      ob.unobserve(t);
+    }
+  }),{threshold:.07});
+
+  function rv(el,y,x,sc,d,dl,blur=true){
+    el.style.opacity='0';
+    el.style.transform=`translateY(${y}px) translateX(${x}px) scale(${sc})`;
+    if(blur)el.style.filter='blur(5px)';
+    el.style.transition=`opacity ${d} ease,transform ${d} ease${blur?`,filter ${d} ease`:''}`;
+    el.style.transitionDelay=dl;
+    ob.observe(el);
+  }
+
+  // Cards — sibling-staggered with blur
+  ['.fstep','.wcard','.ncard','.pstep','.ctacard','.vscard'].forEach(sel=>{
+    document.querySelectorAll(sel).forEach(el=>{
+      const sib=[...el.parentElement.children].filter(c=>c.matches(sel));
+      rv(el,22,0,1,'.52s',`${sib.indexOf(el)*70}ms`);
+    });
+  });
+
+  // Section labels / headings / subtitles
+  document.querySelectorAll('.eye,.sec,.sub').forEach(el=>rv(el,16,0,1,'.52s','0ms'));
+
+  // Framework phase headers — slide from left, no blur
+  document.querySelectorAll('.fphase').forEach(el=>rv(el,0,-22,1,'.44s','0ms',false));
+
+  // Tools tags stagger (no blur — small elements)
+  document.querySelectorAll('.ttag').forEach((el,i)=>rv(el,10,0,1,'.38s',`${i*48}ms`,false));
+
+  // VS bottom CTA + CTA inner
+  document.querySelectorAll('.vcta,.ctai>h2,.ctai>p,.ctai>.crow,.ctai>.ctanote').forEach(el=>rv(el,18,0,1,'.52s','0ms'));
+
+  // Stat numbers — scale pop + count-up on viewport enter
+  document.querySelectorAll('.nbig').forEach(el=>rv(el,4,0,.8,'.55s','0ms'));
+
+  // ── BOOKING BOTTOM SHEET ─────────────────────────────────────
+  (function(){
+    // ══════════════════════════════════════════════════════════════
+    // GOOGLE SHEET SETUP — follow these steps once:
+    //
+    // STEP 1 — Create the Google Sheet:
+    //   Go to sheets.google.com → New spreadsheet
+    //   Name it "GrowlyZ Bookings"
+    //   Add headers in row 1: Timestamp | নাম | ফোন | তারিখ | সময়
+    //
+    // STEP 2 — Create the Apps Script:
+    //   In the Sheet → Extensions → Apps Script → paste this code:
+    //
+    //   function doPost(e) {
+    //     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    //     var p = e.parameter;
+    //     sheet.appendRow([new Date(), p.name, p.phone, p.date, p.time]);
+    //     return ContentService.createTextOutput('OK');
+    //   }
+    //
+    // STEP 3 — Deploy as Web App:
+    //   Deploy → New deployment → Type: Web app
+    //   Execute as: Me
+    //   Who has access: Anyone
+    //   → Click Deploy → Copy the Web App URL
+    //
+    // STEP 4 — Paste the URL below, replacing the placeholder:
+    // ══════════════════════════════════════════════════════════════
+    const GS_URL = 'https://script.google.com/macros/s/AKfycbzyPc7vqkChxOU2Hh0rySU9jOJVE6D-l6OTQF3a9d21EaaJjg-ZBuBHt5U1_i5OpkpI/exec'; // ← এখানে URL বসান
+    const DASH_API  = '/api/audit-booking';
+    const CHECK_API = '/api/audit-booking/check';
+    var slotAvailable = null;
+
+    const ov=document.getElementById('bsov');
+    const sh=document.getElementById('bsheet');
+    const form=document.getElementById('bsform');
+    const loading=document.getElementById('bsloading');
+    const succ=document.getElementById('bssucc');
+    let selSlot='';
+
+    function openSheet(){
+      ov.classList.add('open'); sh.classList.add('open');
+      document.body.style.overflow='hidden';
+      requestAnimationFrame(()=>ov.classList.add('vis'));
+      resetForm();
+      setTimeout(()=>document.getElementById('bsname')?.focus(),80);
+    }
+    function closeSheet(){
+      ov.classList.remove('vis'); sh.classList.remove('open');
+      setTimeout(()=>{ ov.classList.remove('open'); document.body.style.overflow=''; },380);
+    }
+    window.closeSheet=closeSheet;
+    window.openSheet=openSheet;
+
+    document.querySelectorAll('.btn.bfire:not(.bswabtn)').forEach(btn=>{
+      if(btn.tagName==='A') btn.setAttribute('href','#');
+    });
+    document.body.addEventListener('click',e=>{
+      const btn=e.target.closest('.btn.bfire:not(.bswabtn)');
+      if(btn){ e.preventDefault(); e.stopPropagation(); openSheet(); }
+    },true);
+    document.getElementById('bshx')?.addEventListener('click',closeSheet);
+    ov?.addEventListener('click',closeSheet);
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSheet(); });
+
+    function resetForm(){
+      selSlot=''; slotAvailable=null; takenSlots=[]; setAvail('');
+      ['bsname','bsphone','bsdate'].forEach(id=>{
+        const el=document.getElementById(id); if(el){ el.value=''; el.classList.remove('err'); }
+      });
+      ['bsne','bspe','bsde','bsste'].forEach(id=>{
+        const el=document.getElementById(id); if(el) el.textContent='';
+      });
+      loading.classList.remove('on'); succ.classList.remove('on');
+      if(form) form.style.display='';
+      const di=document.getElementById('bsdate');
+      if(di){ const t=new Date(); t.setDate(t.getDate()+1); di.min=t.toISOString().split('T')[0]; }
+      var sec=document.getElementById('timeSection');
+      if(sec) sec.style.display='none';
+    }
+
+    function isPhone(v){ return /^(\+?880|0)1[3-9]\d{8}$/.test(v.replace(/[\s-]/g,'')); }
+    function setE(id,msg){ const el=document.getElementById(id); if(el) el.textContent=msg; }
+    function markF(id,bad){ const el=document.getElementById(id); if(el) el.classList.toggle('err',bad); }
+
+    function setAvail(html){ var el=document.getElementById('bsavail'); if(el) el.innerHTML=html; }
+
+    var HOURS=[
+      {val:'10:00',label:'10',tag:'সকাল',ap:'AM'},
+      {val:'11:00',label:'11',tag:'সকাল',ap:'AM'},
+      {val:'12:00',label:'12',tag:'দুপুর',ap:'PM'},
+      {val:'13:00',label:'1', tag:'দুপুর',ap:'PM'},
+      {val:'14:00',label:'2', tag:'বিকাল',ap:'PM'},
+      {val:'15:00',label:'3', tag:'বিকাল',ap:'PM'},
+      {val:'16:00',label:'4', tag:'বিকাল',ap:'PM'},
+      {val:'17:00',label:'5', tag:'সন্ধ্যা',ap:'PM'},
+      {val:'18:00',label:'6', tag:'সন্ধ্যা',ap:'PM'},
+      {val:'19:00',label:'7', tag:'সন্ধ্যা',ap:'PM'},
+      {val:'20:00',label:'8', tag:'রাত',ap:'PM'},
+      {val:'21:00',label:'9', tag:'রাত',ap:'PM'},
+    ];
+    var takenSlots=[];
+
+    function renderSlots(taken){
+      var grid=document.getElementById('hourSlotsGrid');
+      if(!grid)return;
+      if(taken===null){
+        grid.innerHTML='<p style="grid-column:1/-1;text-align:center;color:#94a3b8;font-size:13px;padding:10px 0;margin:0">⏳ স্লট লোড হচ্ছে...</p>';
+        return;
+      }
+      grid.innerHTML='';
+      HOURS.forEach(function(h){
+        var isTaken=taken.indexOf(h.val)!==-1;
+        var isSel=selSlot===h.val;
+        var btn=document.createElement('button');
+        btn.type='button';
+        var c=isTaken?'#9ca3af':isSel?'#E83800':'#374151';
+        var bg=isTaken?'#f5f5f5':isSel?'rgba(232,56,0,0.09)':'#fff';
+        var bd=isTaken?'#e5e7eb':isSel?'#E83800':'#d1d5db';
+        btn.style.cssText='width:100%;padding:6px 2px 5px;border-radius:7px;border:1.5px solid '+bd+';background:'+bg+';cursor:'+(isTaken?'not-allowed':'pointer')+';text-align:center;font-family:inherit;transition:border-color .12s,background .12s;opacity:'+(isTaken?'0.42':'1');
+        btn.innerHTML='<div style="font-size:13px;font-weight:800;line-height:1.1;color:'+c+'">'+h.label+'<sup style="font-size:7px;font-weight:700;letter-spacing:0">'+h.ap+'</sup></div><div style="font-size:8.5px;margin-top:2px;color:'+(isTaken?'#bbb':isSel?'#E83800':'#a0aec0')+';font-weight:500">'+(isTaken?'✕':'')+''+h.tag+'</div>';
+        if(!isTaken){
+          btn.addEventListener('click',function(){
+            selSlot=h.val; slotAvailable=true;
+            setE('bsste','');
+            setAvail('<span style="color:#16a34a;font-size:12px">✅ এই সময়ে স্লট পাওয়া যাচ্ছে</span>');
+            renderSlots(takenSlots);
+          });
+          btn.addEventListener('mouseenter',function(){if(selSlot!==h.val){this.style.borderColor='#E83800';this.style.background='rgba(232,56,0,0.04)';}});
+          btn.addEventListener('mouseleave',function(){if(selSlot!==h.val){this.style.borderColor='#d1d5db';this.style.background='#fff';}});
+        }
+        grid.appendChild(btn);
+      });
+    }
+
+    async function loadSlots(date){
+      takenSlots=[]; selSlot=''; slotAvailable=null; setAvail('');
+      var sec=document.getElementById('timeSection');
+      if(sec) sec.style.display='block';
+      renderSlots(null);
+      try{
+        var r=await fetch(CHECK_API+'?date='+encodeURIComponent(date));
+        var d=await r.json();
+        takenSlots=d.taken||[];
+      }catch(e){takenSlots=[];}
+      renderSlots(takenSlots);
+    }
+
+    document.getElementById('bsdate')?.addEventListener('change',function(){
+      if(this.value){ loadSlots(this.value); }
+      else{
+        takenSlots=[];selSlot='';slotAvailable=null;setAvail('');
+        var sec=document.getElementById('timeSection');
+        if(sec) sec.style.display='none';
+      }
+    });
+
+    document.getElementById('bssub')?.addEventListener('click',()=>{
+      const name=document.getElementById('bsname')?.value.trim()||'';
+      const phone=document.getElementById('bsphone')?.value.trim()||'';
+      const date=document.getElementById('bsdate')?.value||'';
+      let ok=true;
+      if(name.length<2){ setE('bsne','নাম লিখুন'); markF('bsname',true); ok=false; }
+      else{ setE('bsne',''); markF('bsname',false); }
+      if(!isPhone(phone)){ setE('bspe','সঠিক নম্বর দিন (01XXXXXXXXX)'); markF('bsphone',true); ok=false; }
+      else{ setE('bspe',''); markF('bsphone',false); }
+      if(!date){ setE('bsde','তারিখ বেছে নিন'); markF('bsdate',true); ok=false; }
+      else{ setE('bsde',''); markF('bsdate',false); }
+      if(!selSlot){ setE('bsste','সময় বেছে নিন'); ok=false; }
+      if(!ok) return;
+
+      form.style.display='none';
+      loading.classList.add('on');
+
+      const params=new URLSearchParams();
+      params.append('name', name);
+      params.append('phone', phone);
+      params.append('date', date);
+      params.append('time', selSlot);
+
+      var sheetFetch = fetch(GS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:params.toString()}).catch(()=>{});
+      var dashFetch  = fetch(DASH_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,phone:phone,date:date,timeSlot:selSlot})}).catch(()=>{});
+      Promise.allSettled([sheetFetch,dashFetch])
+        .finally(()=>{ loading.classList.remove('on'); succ.classList.add('on'); });
+    });
+  })();
+
+</script>
+
+<!-- ── AUTH SYNC: Dashboard ↔ Website ─────────────────── -->
+<script>
+(function() {
+  var DASHBOARD = 'http://localhost:3001';
+  var SESSION_KEY = 'gz_session';
+  var SESSION_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days in ms
+
+  function getSession() {
+    try {
+      var raw = localStorage.getItem(SESSION_KEY);
+      if (!raw) return null;
+      var s = JSON.parse(raw);
+      // Expire after 7 days
+      if (Date.now() - s.ts > SESSION_TTL) {
+        localStorage.removeItem(SESSION_KEY);
+        return null;
+      }
+      return s;
+    } catch(e) { return null; }
+  }
+
+  function setLoggedInUI(session) {
+    var name = session.name || session.phone || 'Dashboard';
+    var shortName = name.length > 12 ? name.slice(0, 12) + '…' : name;
+
+    // Desktop button → "Go to Dashboard"
+    var btn = document.getElementById('navAuthBtn');
+    if (btn) {
+      btn.href = DASHBOARD + '/dashboard';
+      btn.innerHTML =
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>' +
+        '<span style="max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + shortName + '</span>';
+      btn.style.cssText = 'gap:6px;font-size:13px;padding:8px 16px;background:linear-gradient(135deg,rgba(255,85,0,0.12),rgba(255,146,0,0.08));border-color:rgba(255,85,0,0.35);color:#FF6500;';
+      btn.title = 'Go to Dashboard';
+    }
+
+    // Mobile drawer button
+    var mob = document.getElementById('mobAuthBtn');
+    if (mob) {
+      mob.href = DASHBOARD + '/dashboard';
+      mob.textContent = '⚡ Dashboard খুলুন';
+      mob.style.color = '#FF6500';
+    }
+  }
+
+  function setLoggedOutUI() {
+    var btn = document.getElementById('navAuthBtn');
+    if (btn) {
+      btn.href = DASHBOARD + '/login';
+      btn.innerHTML =
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>' +
+        'ক্লায়েন্ট লগইন';
+      btn.style.cssText = 'gap:6px;font-size:13px;padding:8px 16px;';
+    }
+    var mob = document.getElementById('mobAuthBtn');
+    if (mob) {
+      mob.href = DASHBOARD + '/login';
+      mob.textContent = '🔐 ক্লায়েন্ট লগইন';
+      mob.style.color = 'var(--oa)';
+    }
+  }
+
+  // Init on page load
+  var session = getSession();
+  if (session) {
+    setLoggedInUI(session);
+  } else {
+    setLoggedOutUI();
+  }
+
+  // Listen for storage changes from dashboard tabs (login/logout in other tab)
+  window.addEventListener('storage', function(e) {
+    if (e.key === SESSION_KEY) {
+      var s = getSession();
+      if (s) setLoggedInUI(s);
+      else setLoggedOutUI();
+    }
+  });
+})();
+</script>
+</body>
+</html>

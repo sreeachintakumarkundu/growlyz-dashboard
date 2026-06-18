@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="og" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF7A00"/>
+      <stop offset="100%" stop-color="#FF4500"/>
+    </linearGradient>
+    <clipPath id="box">
+      <rect width="32" height="32" rx="7"/>
+    </clipPath>
+  </defs>
+  <!-- Dark background -->
+  <rect width="32" height="32" rx="7" fill="#111827"/>
+  <!-- Dark navy upper-left shape -->
+  <path d="M0 0 H32 V9 L5 32 H0 Z" fill="#1d3350" clip-path="url(#box)"/>
+  <!-- Orange lower-right triangle -->
+  <path d="M32 9 V32 H5 Z" fill="url(#og)" clip-path="url(#box)"/>
+</svg>
